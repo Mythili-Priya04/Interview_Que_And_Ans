@@ -1,0 +1,349 @@
+1. Planning asp.net ?
+	a. Asp.net Web form-2003
+		i. No cross platform
+		ii. Worst due to view state and page life cycle
+		iii. Quit complicated
+		iv. Html control very less
+		v. Web.config
+	b. Mvc-2009
+		i. No cross platform
+		ii. Medium complicated
+		iii. Good control due to razor view
+		iv. Web.config
+	c. Asp. Net MVC core 2017
+		i. Cross platform
+		ii. Best all version
+		iii. Very simplified
+		iv. Good control due to razor view
+		v. Appsetting.json
+
+-----------------------------------------------------------------------------------------------------------------------------------
+2. What is asp.net MVC core?
+	a. Is open source . Cross platform web development to develop web application created by Microsoft.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+3. Explain MVC architecture?
+	a. Controller
+		i. Its bind model and view
+	b. Model
+		i. Domain class and business logic
+	c. View
+		i. Html and css
+-----------------------------------------------------------------------------------------------------------------------------------
+4. Explain the importance of wwwroot folder?
+	a. Is very special folder to store static contents lke, html css ans js files.
+-----------------------------------------------------------------------------------------------------------------------------------
+5. Importance of app setting .json?
+	a. Its helps to store config information.
+	b. Its store data key and value pair.
+-----------------------------------------------------------------------------------------------------------------------------------
+6. How to read appsetting.json file values?
+	a. We use the IConfiguration object which is injected by MVC core dependency injection framework. 
+	b. Configuration['keyname'] or Configuration['environment:prod']
+-----------------------------------------------------------------------------------------------------------------------------------
+7. Explain dependency injection?
+	a. Dependency injection is practice of providing dependent objects from the outside rather that class creating using the new keyword. 
+-----------------------------------------------------------------------------------------------------------------------------------
+8. Why we need dependency injection?
+	a. Making the changes in lot of the places to avoid
+	b. We can changes the one place and the changes are reflected across the application seamlessly. 
+-----------------------------------------------------------------------------------------------------------------------------------
+9. How do we implemented DI?
+	a. In startup.class file within  configure service method using scoped,singleton or transient
+	b. Eg.
+	c. Service.addscoped<customerdbcontext>();
+	d. When new version come into like customerdbcontext_1
+	e. We can easily chaange the one place in startup service.addscoped<customerdpcontext, customerdbcontext_1)();
+-----------------------------------------------------------------------------------------------------------------------------------
+10. Middle ware use in MVC?
+	a. Middle ware helps to execute the pre-processing logic before controller is executed.
+-----------------------------------------------------------------------------------------------------------------------------------
+11. How to implement middleware?.
+	a. Add middleware class using middleware template.
+	b. Write the logic on invoke method like custom authentication and authorization
+	c. Use this middleware=> configure method => app.usemiddlware<custommiddleware>();
+-----------------------------------------------------------------------------------------------------------------------------------
+12. What does start.up cs file?
+	a. Configureservice;
+		i. Configure service method  help us to configure our dependency injection objects.
+		ii. Service .add is there
+	b. configure method
+		i. Configure method help us to configure middleware.
+		ii. App.use method is there
+-----------------------------------------------------------------------------------------------------------------------------------
+13. What are different ways of doing DI?
+	a. Singleton, scoped and transient 
+	b. Add scoped:
+		i. Instantiates once per request made to server
+		ii. Every request a single instance is created and same instance is injected 
+	c. Trasnient.
+		i. New  instances created every single request
+	d. Singleton:
+		i. Once one instance is created at global
+-----------------------------------------------------------------------------------------------------------------------------------
+14. What is Razor?
+	a. Help use to write server side code and html code.
+	b. @{write c# code}
+-----------------------------------------------------------------------------------------------------------------------------------
+15. How to pass model to view?
+	a. Return view(view name, data)
+-----------------------------------------------------------------------------------------------------------------------------------
+16. What are strongly typed views?
+	a. We can get intelligence on view 
+	b. @model model name
+-----------------------------------------------------------------------------------------------------------------------------------
+17. What is view model?
+	a. We can't use multiple model in razor page
+	b. Instead of we can create one single model
+-----------------------------------------------------------------------------------------------------------------------------------
+18. What is Kestrel ?
+	a. Kestrel is default server of asp.net core which ships asp.net core setup
+-----------------------------------------------------------------------------------------------------------------------------------
+19. Why kestrel 
+	a. IIS only run windows
+-----------------------------------------------------------------------------------------------------------------------------------
+20. Does kestrel replace IIS?
+	a. NO, its specific only for asp.net
+	b. Revers proxy architecture 
+	c. Iis=>kestrel=> mvc
+-----------------------------------------------------------------------------------------------------------------------------------
+21. What are cookies?
+	a. Cookies are text file , its store some kind of information
+-----------------------------------------------------------------------------------------------------------------------------------
+22. What is session management?
+	a. Http is stateless proto call is
+	b. Helps us to maintain states between https request.
+-----------------------------------------------------------------------------------------------------------------------------------
+23. Session management?
+	a. Httpcontext.session.set or get
+	b. Viewdata[]
+	c. Tempdata[]
+	d. Viewbag
+-----------------------------------------------------------------------------------------------------------------------------------
+24. Action Filters in mv?
+	1. Action filter will applied on controller level or action level
+	2. Action filters are used to implement the logic  that execute pre and post action execute
+	3. Types:
+		a. Authorize
+		b. Child action only
+		c. Handle error
+		d. Output cache
+		e. Require HTTPs
+		f. Validate input
+		g. Validate antiforgery token
+	4. Output cache:
+		a. The action filter caches the output of the controller action method for specified time
+		b. [outputcache(duration=10)]
+	5. Handle error:
+		a. This  action filter handles the error raised when a controller action executes
+		b. [Handle error]
+	6. Authorize:
+		a. This action filter enables you to restrict access to particular user or role.
+		b. [Authorise[Roles="admin"]
+-----------------------------------------------------------------------------------------------------------------------------------
+25. what is routing? explin attribute routing?
+	a. routing is used to handle the httprequest based on the url.
+	b. Attribute based routing is ablity to manipulate the behaviour of the url by route attribute.
+	c.configure service method:
+		app.useendpoints(endpints=>endpints.mapdefaultcontrolledRoute())
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Question 26  :- What exactly is a session ?
+Question 27  :- Explain "HTTP is a stateless protocol" ?
+Question 28  :- What are various way of doing session management ?
+Question 29  :- Are sessions enabled by default ?
+Question 30  :- How to enable sessions in MVC core ?
+Question 31  :- Are sessions variables shared(global) between users ?
+Question 32  :- Do session variables use cookies ?
+Question 33  :- What is a cookie ?
+Question 34  :- Explain idle time out in sessions ?
+Question 35  :- What does a Context means in HTTP ?
+
+ASP.NET MVC Interview Questions & Answers - Part 3
+
+Question 36 :- When should we use viewdata ?
+Question 37 :- How to pass data from controller to view ?
+Question 38 :- In same request can viewdata persist across actions ?
+Question 39 :- ViewData vs ViewBag
+Question 40 :- How does ViewBag work internally?
+Question 41 :- Explain ViewModel?
+Question 42 :-  ViewBag vs ViewModel whats the best practice?
+
+ASP.NET MVC Interview Questions & Answers - Part 4
+
+43  :- Explain tempdata ?
+44  :- Can tempdata persist across action redirects ?
+45  :- How is tempdata different from viewdata ?
+46  :- If tempdata is read is it available for next request ?
+	a.once valeus is read from the tempdata that values is deleted, if  you want that values for next request we can use peek .
+	
+47  :- How to persist tempdata ?
+
+48  :- What does Keep do in tempdata ?
+-----------------------------------------------------------------------------------------------------------------------------------
+49  :- Explain Peek in tempdata ?  
+	peek : read the value and hold it for next request
+	keep: without read the value and hold it for next requst
+	a.Peek: The Peek method reads the value of the TempData item without deleting it.
+	b.The Keep method marks the TempData item as persistent, so that it is not deleted when the next HTTP request is made.
+-----------------------------------------------------------------------------------------------------------------------------------
+50  :- How is tempdata different from session variables ?
+	a. tempdata:
+		short lived until the next http request
+		private to user
+		pass data from next view and next controller.
+		display sucess message after user insert some record.
+	b.session:
+		long lived until the user'session's  expires
+		can be shared between muliple users.
+		used to stored the data that needs to access entire user session.
+		stored user login permission.
+		-----------------------------------------------------------------------------------------------------------------------------------
+51  :- If i restart the server does tempdata, session stay ?
+	a. No. tempdata is stored on browser session cache , so its lost when browser is closed or user navigate to different site.
+	b. sessio is stored on server , but is also lost when the server is restarted.
+	-----------------------------------------------------------------------------------------------------------------------------------
+52  :- Is tempdata private to a user ?  
+	a.yes,tempdata is privaate to user.it's stored on browser session cache, which is unique to each user.
+	-----------------------------------------------------------------------------------------------------------------------------------
+53  :- ViewData vs ViewBag vs Tempdata vs Session variables
+-----------------------------------------------------------------------------------------------------------------------------------
+ASP.NET MVC Interview Questions & Answers - Part 5
+
+Question 54  :- What is  WebAPI ?
+Question 55  :- What is the advantage of WebAPI ?
+Question 56  :- Explain REST and Architectural constraints of REST?
+Question 57  :- Can we use  TCPIP protocol with Web API?
+Question 58  :- How WebAPI different from MVC controller ?
+Question 59  :- What is content negotiations in Web API ?
+Question 60  :- WebAPI vs WCF ?
+Question 61  :- WCF REST vs WebAPI REST ?
+Question 62  :- How to return HTTP status codes ?
+Question 63  :- For error which status code is returned ?
+Question 64  :- How did you secure your web API ?
+Question 65  :- How do current JS frameworks work with webAPI ?
+
+-----------------------------------------------------------------------------------------------------------------------------------
+1.Asp.net core mvc life cycle?
+Request received: The request is received by the ASP.NET Core pipeline.
+Middleware: The request is processed by middleware components.
+Routing: The request is routed to the appropriate controller action.
+Action execution: The controller action is executed.
+View rendering: The view is rendered, if necessary.
+Response sent: The response is sent back to the client.
+	-----------------------------------------------------------------------------------------------------------------------------------
+2. MVC life cycle?
+Request received: The request is received by the ASP.NET pipeline.
+Routing: The request is routed to the appropriate controller action.
+Action execution: The controller action is executed.
+View rendering: The view is rendered, if necessary.
+Response sent: The response is sent back to the client.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+Web API:
+1. Web apI purpose?
+	a. Application programming interface
+	b. UI application will be different and business logic in one single place.
+-----------------------------------------------------------------------------------------------------------------------------------
+2. What are web API advantage over WCF and web service?
+	a. Web API written in any language.
+	b. Its works the way http verbs like. Get put post delete
+	c. Web api is open source
+	d. Web api us light weight architecture and good for device.(json and XML are light weight)
+	e. Web api pattern is much similar to MVC controller so easy to understand and maintain
+	f. Web api is easy configuration compare to WCF.
+-----------------------------------------------------------------------------------------------------------------------------------
+3. What are http verbs or http methods:
+	a. Get : get the information from the resource(list and single id)
+	b. Post: create a new resource in database
+	c. Put : update the resource
+	d. Delete: delete the resource
+-----------------------------------------------------------------------------------------------------------------------------------
+4. Web API controller and MVC controller?
+	a. System.web.http.APIcontroller and system.web.mvc.controller
+	b. Api not support views and mvc support views
+-----------------------------------------------------------------------------------------------------------------------------------
+5. API testing tool?
+	a. Postman, swagger, Fiddler
+-----------------------------------------------------------------------------------------------------------------------------------
+6. Web api return types:
+	a. Void: empty content
+	b. HTTP response message: its will convert response to http message
+	c. Ihhtpactionresult: internally call execute sync  to create HTTP response message.
+	d. Other types: own custom types
+-----------------------------------------------------------------------------------------------------------------------------------
+7. What is content negotiation?
+	a. Content -type: application/json
+		i. The web api will return json format.
+	-----------------------------------------------------------------------------------------------------------------------------------
+8. What are response code in web api?
+	a. 200: success
+	b. 201: success and record created
+	c. 3xx: redirect 
+	d. 4xx: 
+		i. 400 bad request(The request was invalid.)
+		ii. 401 : Unauthorized(invalid credential or client does not have the necessary permissions.)
+		iii. 403:  forbidden permission denied(The client is authorized to access the requested resource, but is not allowed to perform the requested action.)
+		iv. 404 (The requested resource could not be found)
+	e. 500: server error(api code or env error)An unexpected error occurred on the server. 
+	f.503: Service Unavailable (server being overloaded, or the server undergoing maintenance)
+-----------------------------------------------------------------------------------------------------------------------------------
+9. What is basic authentication?
+	a. Verifying the user have access the site.
+-----------------------------------------------------------------------------------------------------------------------------------
+10. What is API key authentication?
+	a. API owner will share the API key to user and this key will authenticate the users of API.
+-----------------------------------------------------------------------------------------------------------------------------------
+11. What is token based authentication?
+	a. Client will send the valid credential to authentication server
+	b. Authentication server sends token to the clients as response.
+	c. The client application then used the token to access the restricted resources.
+	d. If the acces token is expired . Then the client application can request for a new access token by refresh token.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+12. Oauth is standard for creating standard  token based authentication an authorization.
+-----------------------------------------------------------------------------------------------------------------------------------
+13. What is JWT token authentication?
+	a. JWT is token format.
+-----------------------------------------------------------------------------------------------------------------------------------
+14. What are parts of JWT token?
+	a. Json web token
+	b. Red : header(alg,type)
+	c. whilght : payload(user details)
+	d. Green: verify  signature
+-----------------------------------------------------------------------------------------------------------------------------------
+15. Where is JWT token present?
+	a. Authorization: bearer(Key : value)
+	b. Its present in header.
+-----------------------------------------------------------------------------------------------------------------------------------
+16.what is the use of header in web api request?
+Headers can be used to transmit sensitive information such as authentication tokens, API keys, or personal information. It is important to ensure that this information is encrypted when transmitted over the network to prevent eavesdropping and tampering.
+ 
+ -----------------------------------------------------------------------------------------------------------------------------------
+Question In accenture?
+float vs decimal?
+
+Feature	  Decimal	  Float
+Size	   128 bits	   32 bits
+Precision	Up to 28 decimal places	Up to 6 decimal places
+Accuracy	More accurate	Less accurate
+Performance	Less efficient	More efficient
+-----------------------------------------------------------------------------------------------------------------------------------
+int 32 vs int 64?
+
+Int16: 2 bytes
+Int32 and int: 4 bytes
+Int64 : 8 bytes
+in C#, long is mapped to Int64.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+Authentication and authorization is work ?
+
+Action filter in asp.net core?
+	a.Exception filter:IExceptionFilter
+	b.Outputcache
+	c.authorization filter:IAuthorizationFilter
+	d.Action filetr have two methods:
+		a.OnActionExecuted: This method is executed after the action method has been called and before the result is executed.
+		b.OnActionExecuting : This method is executed before the action method is called. Authorization
