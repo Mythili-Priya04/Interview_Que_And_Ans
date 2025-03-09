@@ -1,0 +1,293 @@
+1)//QUE:Difference Between Head And Body in HTML.cs
+//ANS:
+//*Head:
+// the <head> element is where you place meta information Ex:<title>,<meta>,<link>,<script>,<style>
+
+//*Body
+//The <Body> element is where you place the actual content of your HTML web page.Ex: <div>,<h1>,<img>,<a>
+
+
+2)//QUE:Difference between HTML/html5 and XHTML.cs
+//ANS:
+//*HTML/html5
+//1)Html has more strictless syntax rules Ex:<img src ="">
+//2)HTML is not case-sensitive<DIV><P>
+//3)Html is widely support by all browser and web platform
+
+
+//*XHTML
+//1)XHTML has strict syntax rules Ex:<img src =""/>
+//2)XHTML is  case-sensitive<div><p>
+//3)XHTML is LIMITED support by  browser 
+
+
+3)//QUE:Explain the grid system in Bootsrap.cs
+//ANS:
+//*Grid System is 12 column layout and its designed to Adapt to various screen size
+
+4)//QUE:What are Empty Element .cs
+//Ans:
+//An empty element in HTML is an elements that doesn't  need content between opening and closing tags
+//Empty elements are also called a self-closing or void elements
+//Ex:<Link/> , <meta/> ,<img/> , <input/>
+
+
+5)//QUE:What are HTML attributes , what are the type of HTML Attribute.cs
+//ANS:
+//HTML attribute provide additional information about HTML element like id,class,href
+
+
+6)//QUE:What are HTML elements,What are the difference between element and tag.cs
+//ANS:
+//*HTML element are the building blocks of web pages
+//*Element consists of a start tag,content and an end tag
+//Ex:
+//<p>amulu</p>
+
+
+7)//QUE:What are table ,tr,th,td elements , what are table advantage , disadvantage.cs
+//ans:
+//* table elements:
+
+//1)<table> is the container for the entire table
+
+//2)<tr> is used to define a row in the table
+
+//3)<th> is used to represent the column headers
+
+//4)<td> is used to represent the regular cells in a table
+
+
+//advantage:
+//*tables are a powerful tool for styling and displaying structure data
+
+
+//disadvantage:
+//*table multiple column structure is not good for mobile devices because its not responsive
+
+
+8)//QUE:What are the 3 diff btw Block-Level And inline Elements .cs
+//ANS:
+//*Block-Level:
+//1)Block-Level elements create "blocks" of content <div>,<p>,<h1>,<ul>,<li>,<table>,<form>
+//2)by default block-level elements start on a new line
+//3)you can set both width and height for block level element
+
+//inline Elements:
+//1)inline Elements length depends on their content length <span>,<a>,<strong>,<em>,<img>,<input>,<br>
+//2)inline elements do not start on a new line
+//3)you can't width and height for inline elements
+
+
+
+9)//QUE:What are the 5 Type of Link in HTML.cs
+//Ans:
+
+//1)Anchor Link <a>:
+//*used for navigate from one webpage to another
+
+//2)External Resource Link <link>:
+//*used in the <head> section to connect to an external resource like a stylesheet or an icon
+
+//3)Image Link <img> :
+//*used to create a clickable image that leads to another webpage
+
+//4)Bookmark Link:
+//*point to a specific location within a webpage using a named anchor
+
+//5)Email Link:
+//*Email Link create  a clickable link tha open the users default email.
+
+
+10)//QUE:What are the Advantage of using Bootstrap.cs
+//ANS:
+
+//1)Rapid Development:
+//*Bootstrap provides wide range of ready to use components like navigate bars,button,forms,modal and more..
+
+//2)Responsive Design:
+//*Bootstrap is built with a mobile-first approach,meaning it prioritize design for smaller screen first and then scales up for large screen
+
+//3)Cross Browser Compatibility:
+//*Bootstrap provides a consist set of style and component across different browser
+
+//4)Large community and Support:
+//*This means there are plenty of resource ,document, tutorials,and forums available for assistance
+
+//5)Accessibility:
+//*Bootstrap incorporates best practices for web accessibility ,marking it easier to create website that are usable by people with disabilities
+
+
+11)//QUE:What are the diff type of List in HTML.cs
+//ANS:
+
+//1)ordered list:
+//*An ordered list is a list where the items are numbered or ordered in a specific sequence
+
+
+//2)Unordered list:
+//*An unordered List is a list where the items are marked with bullets
+
+//3)Description list:
+//* a Description list is used to display a list of terms along with their corresponding description or definitions
+
+
+12)//QUE:What are the inline style in css .cs
+//ANS:
+
+//*inline style apply styles directly to individual HTML elements using the style Attribute
+
+//*this method is suitable for applying style to a single element.
+
+
+13)//QUE:What are the role and uses of the <div> element in HTML.cs
+//ANS:
+//The <div>(division) element in html is a container that is used to group and structure the content on a webpage
+
+
+14)//QUE:What are the Semantic element in html.cs
+//ANS:
+//<header>,<main>,<section>,<footer> are semantic elements used to define the layout and structure of a webpage in a meaningful and organized way
+//*<header> : Contains the header content of website 
+//*<main>  :contains the main content of the document
+//*<section> : contains the group related content
+//*<footer> : provides contact information
+
+
+
+15)//QUE:What is Meta tag?
+//ans:
+//Meta tag in HTML are elements used to provide metadata or Additional information about a web page
+
+
+16)//QUE:What is a fragment identifier in URLS.cs
+//ANS:
+//*A fragment identifier is used to navigate to a specific section of the same webpage
+//*fragment identifier is preceded a #(hash) symbol
+
+17)//QUE: what is bootstrap.cs
+//ANS:
+//*bootstrap is a popular opensource frontend framework which provides responsive and mobile first css
+
+
+18)//QUE:What is Bootstrap Components, What are top 10 bootstrap components.cs
+//ANS:
+//*Bootstrap components are pre-designed elements that can be easily integrated into a web project
+
+//*top 10 bootstrap components
+
+//1)Button
+//2)Navbar
+//3)Forms
+//4)Carousel
+//5)Cards
+//7)Pagination
+//8)spinners
+//9)Badges
+//10)Modals
+
+19)//QUE:What is Css , What are the 5 way to implement Css in html.cs
+//ANS:
+//*CSS(cascading style sheets) is a stylesheet language used to control the presentation of web page
+
+//*5 way to implement Css in html:
+//1)inline css
+//2)Internal css
+//3)External css
+//4)@import rule
+//5)css preprocessors
+
+
+20)//QUE:What is Data attribute.cs
+//ANS:
+//Data Attribute in HTML Provide a way to add custom data attribute to add additional information in elements
+//Data attribute are specified using the data-prefix
+//Data attribute can be accessed by dataset property in JS
+
+
+21)//QUE:What is External stylesheet in CSS.cs
+//ANS:
+//*In External stylesheet a separate css file is create like (filename.css) and link it in the HTML file using the <link>element
+// *this is most common and recommended
+
+22)//QUE:What is HTML , Difference Between HTML,HTML5, Advantage OF HTML5.cs
+//ANS:
+//*HTML(Hyper Text Markup Language)is the standard markup language used to create web pages
+//*Markup language meaning a language which define the structure of a document using elements like heading,paragraph,link,lists,and more
+//*Html is not a programming language,its a markup language like XML
+
+//*Advantage OF HTML5:
+//1)New semantic Element:<header>,<nav>,<article>,<section>,<aside>,<Footer>
+//2)Form input Type:input type like date,email
+//3)Audio and video Support:<audio>,<Video>
+//4)Mobile Compatibility
+//5)simple to write a html code
+
+
+23)//QUE:What is internal style sheet.cs
+//ANS:
+
+//*internal style sheet can be implement by adding the <style> element in the <head> section of HTML
+
+//* Thi method is suitable for smaller project
+
+
+24)//QUE:What is the colspan attribute in HTML.cs
+//ANS:
+
+//* Colspan attribute is used to merge multiple cells horizontal into a single cell
+//*Colspan attribute is applicable is application to <th> and <td>
+
+
+25)//QUE:what is the diff between div and span.cs
+//ANS:
+//*div
+//The <div>(division) element in html is a container that is used to group and structure the content on a webpage
+//DIV is block-level element
+
+//*span
+//The <span> element in HTML is an inline container used to apply style or script to a specific section of text or content
+//span is a inline element
+
+
+26)//QUE:What is the difference between Absolute and  Relative URL.cs
+//ANS:
+//*Absolute:
+//1)Absolute URLs provide the complete web address of a resource
+//2)Absolute URLs are typically used to link to resource on different website
+
+
+//*Relative:
+//1)Relative URLs specify the location of a resource in relation to the current document .full url is not required.
+//2)They are used when linking to resource within the same website 
+
+
+27)//QUE:What is the difference between col-xs,col-sm,col-md,col-lg,col-xl.cs
+//ANS:
+
+//1)col-xs(Extra small):Applied to extra small screen(phone)
+
+//2)col-sm (small) : Applied to small screen(tables)
+
+//3)Col-md(medium) :Applied to medium screen (Laptop)
+
+//4)col-lg(Large) : Applied to large screen(large desktops)
+
+//5)col-xl( Extra Large) : Applied to large screen(large TVS)
+
+
+28)//QUE:What is the difference between <section> and <article> element.cs
+//ANS:
+//* the <section> element is a generic container used to group related content together
+//* the <Article> element represents a self contained or independent piece of content Ex:blog post,news article etc...
+
+
+
+29)//QUE:What is the role of DOCTYPE in Html.cs
+//ANS:
+//*Doctype(Document Type) declaration specifies the version of HTML
+//*Doctype tells the browser which version of HTML it is and how to interpret the code
+
+//que:what if you remove <!DocType html>from html?
+//ans:
+//* then browser can still render the page,but they will not be able to validate the version of html
