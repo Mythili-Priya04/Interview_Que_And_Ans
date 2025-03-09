@@ -1,0 +1,2120 @@
+1)//QUE: What is Abstraction
+//Ans:
+// *Abstraction is one of the key concepts of Object-Oriented Programming (OOP).
+//*It is used to hide complex implementation details and only show essential features to the user.
+//*Abstraction is must be abstract keyword 
+//*Abstraction can an constructor
+//*Abstraction have an abstract and non abstract method
+
+
+//Ex code:
+abstract class Animal
+{
+    // Abstract method (does not have a body)
+    abstract void sound();
+
+    // Non-abstract method
+    void sleep()
+    {
+        System.out.println("The animal is sleeping.");
+    }
+
+    // Constructor
+    Animal()
+    {
+        System.out.println("An animal is created.");
+    }
+}
+
+class Dog : Animal
+{
+    // Providing implementation for abstract method
+    void sound() {
+        System.out.println("The dog barks.");
+    }
+}
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Dog dog = new Dog(); // Calls the constructor of Animal
+        dog.sound(); // Calls the Dog's implementation of sound
+        dog.sleep(); // Calls the non-abstract method from Animal
+    }
+}
+
+2)//QUE:Can we Execute multiple catch block .cs
+//ANS:
+//* NO - we can write multiple catch block but only one out of them will execute
+
+
+//Example code
+
+class Amujhg
+{
+    public static void Main(string[] args)
+    {
+        try
+        {
+            int i= 0;
+            int k = i / 0;
+
+        }
+        catch (ArithmeticException e)
+        {
+
+        }
+        catch(ArgumentOutOfRangeException e)
+        {
+            Console.WriteLine("Exception"+e.Message);
+        }
+    }
+}
+
+3)//QUE:Can we have only try block without catch block is possible.cs
+//ANS:
+//*YES- we can have only try block without catch block but we have to have finally block then
+
+
+//Example code 
+using System;
+
+class Programs
+{
+    static void Main()
+    {
+        try
+        {
+            Console.WriteLine("Inside Try Block.");
+            int result = 10 / 0; // This will cause a divide-by-zero exception.
+        }
+        finally
+        {
+            Console.WriteLine("Finally Block Executed.");
+        }
+    }
+}
+
+4)//QUE:can you create instance  of an abstract class or an interface.cs
+//ANS:
+//*NO,Abstract class and interface can only used for inheritance not for object creation
+
+5)//QUE:Do interface can have a constructor.cs
+//ANS:
+//*NO,interface can only be derived from
+
+6)//QUE:What is Encapsulation.cs
+//ANS:
+//* Encapsulation means WRAPPING of data and Method/Properties into a single unit.
+//* Encapsulation is a access specifier and controller manner its used to getter and setter
+class Employees
+{
+    private int id;//properties
+    public int EmployeeId
+    {
+        get
+        {
+            return id;
+        }
+        set
+        {
+            id = value;
+        }
+    }
+}
+class Amulus
+{
+     static void Main(string[]args)
+    {
+        Employees emp = new Employees();
+        emp.EmployeeId = 1 ;
+    }
+}
+
+7)//QUE:Explain Generics in c#, when and why to use them.cs
+//ANS:
+//*Generic Allows us to Make class and methods - type independent or type safe
+/*
+Type Safety:
+
+Generics provide compile-time type safety, meaning that type errors are caught during compilation, reducing the chances of runtime errors due to incorrect type conversions.
+Code Reusability:
+
+By using generics, you can create more reusable code. You don’t need to write the same logic for multiple data types (like handling an int, string, double, etc.). Instead, you can write the logic once and apply it to different types.*/
+
+
+//Example code 
+
+class Amuthu<T>
+{
+
+    public static bool Arequal(T value,T value2)
+    {
+        return value.Equals(value2);
+    }
+}
+class Amuthul
+{
+
+    public static void Main(string[] args)
+    {
+
+        bool equal = Amuthu<int>.Arequal(4, 4);
+
+        bool equalstring = Amuthu<string>.Arequal("khgfd","jhxdxf");
+
+    }
+}
+
+8)
+//QUE:How to Implement Exception Handling in C#.cs
+//ANS:
+//*Exception handling in object oriented programming is used to manage error
+//try- a try block is a block of code inside which any error can occur
+//catch-when any error occur in TRY block then its passed to catch block to handle it
+//Finally-the finally block is used to execute a given set of statement whether an exception occur or not
+
+
+//Example code
+class Programs
+{
+    static void Main()
+    {
+        try
+        {
+            Console.WriteLine("Enter a number to divide 100:");
+            int num = Convert.ToInt32(Console.ReadLine());
+            int result = 100 / num;  // This might cause a DivideByZeroException
+            Console.WriteLine("Result: " + result);
+        }
+        catch (DivideByZeroException ex)  // Handles DivideByZeroException
+        {
+            Console.WriteLine("Error: Cannot divide by zero.");
+            Console.WriteLine("Exception Details: " + ex.Message);
+        }
+        catch (FormatException ex)  // Handles FormatException if user inputs a non-numeric value
+        {
+            Console.WriteLine("Error: Invalid input. Please enter a valid number.");
+            Console.WriteLine("Exception Details: " + ex.Message);
+        }
+        catch (Exception ex)  // Handles any other general exceptions
+        {
+            Console.WriteLine("An unexpected error occurred.");
+            Console.WriteLine("Exception Details: " + ex.Message);
+        }
+        finally
+        {
+            Console.WriteLine("This block will execute whether an exception occurs or not.");
+        }
+    }
+}
+
+9)//QUE:Multicast delegates.cs
+//ANS:
+//*A delegate is a variable that  hold the REFERENCE TO  METHOD or POINTER TO A FUNCTION
+//* A Multicast delegates is a delegate that holds the reference of more than one method
+
+
+//when to use them:
+//when we need to pass method as a parameter
+
+
+//EX Code:
+
+delegate void Calculatorss(int x, int y);
+class Pros
+{
+    public static void Add(int a, int b)
+    {
+        Console.WriteLine(a + b);
+    }
+    public static void Mul(int a, int b)
+    {
+        Console.WriteLine(a * b);
+    }
+
+
+    public static void Main(string[] args)
+    {
+        Calculatorss calculator = new Calculatorss(Add);
+        calculator += Mul;
+        calculator(1, 2);
+
+
+    }
+
+}
+10)
+//QUE:What are Access Specifier , what is the default access  modifier in a class.cs
+//ANS:
+//*Access specifiers are keywork to specify the accessible of a class,method,property,field
+//*the keyword are -public,private,protected,internal,protected internal
+
+//public -Accessible from anywhere -Used for global access
+//private -Accessible only within the same class- Used to hide sensitive data
+//protected -Accessible within the same class and derived(child) classes- Used in inheritance
+//internal -Accessible within the same assembly (project) but not from another project-	Used for modular development
+//protected internal- Accessible within the same assembly and also in derived classes	-Combination of protected + internal
+
+11)//QUE:What are Anonymous Delegate in C#.cs
+//ANS:
+//*In Anonymous Delegate ,you can create a delegate ,but there is no need to declare the method associate with it
+
+
+//EX Code:
+
+public delegate void Calc(int x, int y);
+class Ajh
+{
+    static void Main(string[] args)
+    {
+        Calc cal = delegate (int x, int y)
+        {
+            Console.WriteLine(x + y);
+        };
+        cal(10, 20);
+
+    }
+}
+
+12) //QUE:What are Collection in C# and what are their types.cs
+//ANS:
+//*C# collection are designed to store ,manage and manipulate similar data more efficiently
+//* Ex:Arraylist,Dictionary,List,Hashtable
+//*Data manipulation meaning adding,removing,finding,and inserting data in the collection 
+
+13)//QUE:What are Extension Method in C#, when to use them.cs
+//ANS:
+//*Extension method allow you to add new method in the existing class without modifying the source code of the original class
+//method also static because we have not create instance 
+// this keywork because we have need to copy the value
+class TRX
+{
+    public static void Main(string[] args)
+    {
+        string test = "Helloworld";
+        string left = test.Substring(5);
+        string right = test.rightSubstring(5);
+        Console.WriteLine(left + right);
+    }
+}
+
+//method also static because we have not create instance 
+ public static class StringExtension 
+{
+    // this keywork
+    public static string rightSubstring(this string s, int count)
+    {
+        return s.Substring(s.Length-count, count);
+    }
+}
+
+//output Helloworld
+
+14)//QUE:What are Nullable type .cs
+//ANS:
+//*Nullable type -to hold the null values we have to use nullable types because variable types doesn't hold null values
+
+//Example code
+
+class Anu
+{
+    public static void Main(string[] args)
+    {
+        int i = null; // normal type throw error
+
+        Nullable<int> n = null; // its hold null
+
+        //(or)
+
+        int?k = null;// its hold null
+    }
+}
+
+15)//QUE:What are the classes and object
+//ANS:
+//*class:
+//* class is nothing but blueprint it cannot do anything it self
+//* class is a logical unit or blueprint .it contains field ,method and properties
+
+//class members are:
+//1) A constructor is a method in the class which gets execute when a class object is created.
+//2) A field is a variable of any type.it is basically the data.
+//3) A property is a member that provides helps in read and write of private field
+//4) A method is a code block that contains a series of statement
+
+
+
+class Person  // Class - Blueprint containing fields, properties, methods, and a constructor
+{
+    // 2) Field - Private variable to store data
+    private int age;
+
+    // 1) Constructor - Executes when an object is created
+    public Person(string name, int age)
+    {
+        Name = name;
+        this.age = age;
+    }
+
+    // 3) Property - Encapsulates the private field, allowing controlled access
+    public string Name { get; set; }
+
+    public int Age
+    {
+        get { return age; }
+        set
+        {
+            if (value > 0)
+                age = value;
+        }
+    }
+
+    // 4) Method - Contains statements to perform an action
+    public void Introduce()
+    {
+        Console.WriteLine($"Hello, my name is {Name} and I am {age} years old.");
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        // Creating an object of Person class
+        Person person1 = new Person("Alice", 25);
+
+        // Accessing method
+        person1.Introduce();
+
+        // Accessing property
+        person1.Age = 30;
+        Console.WriteLine($"Updated Age: {person1.Age}");
+    }
+}
+
+
+//QUE:
+//ANS:
+//*object - an object is an INSTANCE of class
+
+
+16)//QUE:What are the diff type of inheritance
+//Ans:
+//*single inheritance
+//*multilevel inheritance
+//* hierarchical inheritance
+
+
+
+//1️⃣ Single Inheritance
+//➡ In single inheritance, one child class inherits from a single parent class.
+
+
+class Animal  // Parent class
+{
+    public void Eat() => Console.WriteLine("This animal is eating.");
+}
+
+// Dog class inherits from Animal
+class Dog : Animal
+{
+    public void Bark() => Console.WriteLine("Dog is barking.");
+}
+
+class Program
+{
+    static void Main()
+    {
+        Dog dog = new Dog();
+        dog.Eat();  // Inherited method
+        dog.Bark(); // Child-specific method
+    }
+}
+/*Output:*/
+/*
+This animal is eating.
+Dog is barking.
+
+
+2️⃣ Multilevel Inheritance
+➡ In multilevel inheritance, a class is derived from another derived class, creating a chain.*/
+
+
+class Animal
+{
+    public void Eat() => Console.WriteLine("This animal is eating.");
+}
+
+// Dog inherits from Animal
+class Dog : Animal
+{
+    public void Bark() => Console.WriteLine("Dog is barking.");
+}
+
+// Puppy inherits from Dog (Multi-level)
+class Puppy : Dog
+{
+    public void Weep() => Console.WriteLine("Puppy is weeping.");
+}
+
+class Program
+{
+    static void Main()
+    {
+        Puppy puppy = new Puppy();
+        puppy.Eat();  // Inherited from Animal
+        puppy.Bark(); // Inherited from Dog
+        puppy.Weep(); // Own method
+    }
+}
+//Output:
+
+//This animal is eating.
+//Dog is barking.
+//Puppy is weeping.
+
+
+//3️⃣ Hierarchical Inheritance
+//➡ In hierarchical inheritance, multiple child classes inherit from the same parent class.
+
+
+class Animal
+{
+    public void Eat() => Console.WriteLine("This animal is eating.");
+}
+
+// Dog inherits from Animal
+class Dog : Animal
+{
+    public void Bark() => Console.WriteLine("Dog is barking.");
+}
+
+// Cat also inherits from Animal
+class Cat : Animal
+{
+    public void Meow() => Console.WriteLine("Cat is meowing.");
+}
+
+class Program
+{
+    static void Main()
+    {
+        Dog dog = new Dog();
+        dog.Eat();  // Inherited from Animal
+        dog.Bark(); // Own method
+
+        Cat cat = new Cat();
+        cat.Eat();  // Inherited from Animal
+        cat.Meow(); // Own method
+    }
+}
+/*Output:
+
+This animal is eating.
+Dog is barking.
+This animal is eating.
+Cat is meowing.*/
+
+
+17)//QUE:What are the difference between Events and Delegate.cs
+//ANS:
+
+//*Delegate
+//A delegate is a variable that  hold the REFERENCE TO  METHOD or POINTER TO A FUNCTION
+//*A delegate can refer to more than one method of same return type and parameters
+
+//when to use them:
+//when we need to pass method as a parameter
+
+//*Events
+//The events is a notification mechanism that depends on delegates
+//an events is dependent on a delegate and cannot be created without delegate
+
+
+
+//Ex code :
+
+
+// Delegate definition: Can refer to any method with the signature void Notify(string message)
+public delegate void NotifyDelegate(string message);
+
+// Publisher class with an event
+public class Publisher
+{
+    // Declare an event of type NotifyDelegate
+    public event NotifyDelegate OnNotify;
+
+    // Method to raise the event
+    public void RaiseEvent(string message)
+    {
+        // Check if there are any subscribers and invoke the event
+        if (OnNotify != null)
+        {
+            OnNotify(message);  // Invokes all methods subscribed to the event
+        }
+    }
+}
+
+// Subscriber class
+public class Subscriber
+{
+    // Method to handle the event
+    public void HandleNotification(string message)
+    {
+        Console.WriteLine("Received notification: " + message);
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        // Create instances of Publisher and Subscriber
+        Publisher publisher = new Publisher();
+        Subscriber subscriber = new Subscriber();
+
+        // Subscribe to the event
+        publisher.OnNotify += subscriber.HandleNotification;
+
+        // Raise the event
+        publisher.RaiseEvent("This is a test notification!");
+
+        // Output:
+        // Received notification: This is a test notification!
+    }
+}
+
+18)//QUE:What are the loop types in C#.cs
+//ANS:
+
+
+//*FOR LOOP:
+//initialization: Initializes the loop variable.
+//condition: Specifies the condition to check before each iteration. The loop runs as long as this condition is true.
+//increment/decrement: Updates the loop variable after each iteration.
+
+//Ex Code:
+for (int i = 0; i < 5; i++)
+{
+    Console.WriteLine(i);  // Prints 0, 1, 2, 3, 4
+}
+
+//*FOREACH LOOP:
+//The foreach loop is used to iterate through elements of a collection (like arrays, lists, or other collections) without having to manually manage the index or the size of the collection.
+
+//Ex Code:
+int[] numbers = { 1, 2, 3, 4, 5 };
+foreach (var num in numbers)
+{
+    Console.WriteLine(num);  // Prints 1, 2, 3, 4, 5
+}
+
+
+//* WHILE LOOP:
+//The while loop is used when you want to repeat a block of code as long as a specific condition is true.
+//Ex Code:
+int i = 0;
+while (i < 5)
+{
+    Console.WriteLine(i);  // Prints 0, 1, 2, 3, 4
+    i++;
+}
+
+
+//* DO-WHILE
+//The loop executes the block of code first and then checks the condition. If the condition is true, it continues; if false, the loop terminates.
+
+//Ex Code
+int i = 0;
+do
+{
+    Console.WriteLine(i);  // Prints 0, 1, 2, 3, 4
+    i++;
+} while (i < 5);
+
+19)//QUE:What are the type of constructor.cs
+//ANS:
+//*Default Constructor
+//*Parameterized Constructor
+//*Copy Constructor
+//*Static Constructor
+//*Private Constructor
+
+/*
+1️⃣ Default Constructor
+✅ A default constructor is a constructor without parameters.
+✅ It initializes an object with default values.
+✅ If no constructor is defined, C# automatically provides a default constructor.
+*/
+
+//Example:
+
+class Employee
+{
+    public string Name;
+
+    // Default Constructor
+    public Employee()
+    {
+        Name = "Default Employee";  // Initializes with default value
+        Console.WriteLine("Default Constructor Called");
+    }
+
+    static void Main()
+    {
+        Employee emp = new Employee();  // Default constructor is called
+        Console.WriteLine("Employee Name: " + emp.Name);
+    }
+}
+/*📝 Output:
+
+Default Constructor Called
+Employee Name: Default Employee
+
+
+2️⃣ Parameterized Constructor
+✅ A parameterized constructor takes arguments to initialize an object with specific values.
+✅ It allows flexibility by passing values during object creation.*/   
+
+/*Example:*/
+
+
+class Employee
+{
+    public string Name;
+    public int Age;
+
+    // Parameterized Constructor
+    public Employee(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    static void Main()
+    {
+        Employee emp = new Employee("John", 30);  // Passing values
+        Console.WriteLine($"Employee Name: {emp.Name}, Age: {emp.Age}");
+    }
+}
+/*📝 Output:
+Employee Name: John, Age: 30
+
+3️⃣ Copy Constructor
+✅ A copy constructor is used to create a new object by copying the values of an existing object.
+✅ It ensures a duplicate object with the same properties.
+*/
+
+
+//Example:
+
+class Employee
+{
+    public string Name;
+    public int Age;
+
+    // Parameterized Constructor
+    public Employee(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    // Copy Constructor
+    public Employee(Employee emp)
+    {
+        Name = emp.Name;
+        Age = emp.Age;
+    }
+
+    static void Main()
+    {
+        Employee emp1 = new Employee("Alice", 28);
+        Employee emp2 = new Employee(emp1);  // Copying emp1 values
+
+        Console.WriteLine($"Employee 1: {emp1.Name}, Age: {emp1.Age}");
+        Console.WriteLine($"Employee 2: {emp2.Name}, Age: {emp2.Age}");
+    }
+}
+/*📝 Output:
+
+Employee 1: Alice, Age: 28
+Employee 2: Alice, Age: 28
+
+
+4️⃣ Static Constructor
+//* static constructor must be method and variable static
+//*static constructor must be parameteless
+
+Example:*/
+
+class Employee
+{
+    public static int EmployeeCount;
+
+    // Static Constructor
+    static Employee()
+    {
+        EmployeeCount = 100;
+        Console.WriteLine("Static Constructor Called");
+    } 
+
+    static void Main()
+    {
+        Console.WriteLine($"Initial Employee Count: {Employee.EmployeeCount}");
+    }
+}
+/*📝 Output(Runs only once):
+
+Static Constructor Called
+Initial Employee Count: 100
+
+
+5️⃣ Private Constructor:
+//Private Constructor doesn't create  object
+//private Constructor all method must be static
+
+
+Exampl:*/
+
+
+class Singleton
+{
+    private static Singleton instance;
+
+    // Private Constructor
+    private Singleton()
+    {
+        Console.WriteLine("Singleton Instance Created");
+    }
+
+    public static Singleton GetInstance()
+    {
+        if (instance == null)
+        {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+
+    static void Main()
+    {
+        Singleton obj1 = Singleton.GetInstance();
+        Singleton obj2 = Singleton.GetInstance();
+    }
+}
+/*📝 Output:
+Singleton Instance Created
+(Only one instance is created, even though we call GetInstance() twice.)
+
+*/
+
+20)//QUE:what are the type of join in sql server 
+//ANS:
+//*Left outer join - a left join return all the rows from the left table,along with any matching rows from the right table
+
+//*Right outer join - a Right join return all the rows from the Right table,along with any matching rows from the left table
+
+//*full outer join - a full outer join return all the row from both the left and right tables in the join
+
+//*inner join - an inner join return only the common rows from both tables that meet the join condition
+
+//cross join - return each row from the first table is  combined every  row from second table
+
+//Self Join - A table join with itself .useful for hierarchical data (E.g:employee and manager)
+
+//Natural join - Automatically joins tables based on columns with the same name and data type
+
+21)//QUE:what are the Advantage of oops
+//ANS:
+//*Reuse of code using inheritance.
+//*flexibility of code using polymorphism
+//*secure application by using Encapsulation 
+//*Easily scalable from small to larger application
+//*Easier troubleshooting of code because of modularity
+
+
+
+//Example code all point
+
+//1.Reuse of Code Using Inheritance
+//Inheritance allows code reuse by letting a class derive properties and methods from another class.
+
+class Employee
+{
+    public string Name { get; set; }
+    public void Work() => Console.WriteLine($"{Name} is working");
+}
+
+// Derived class reusing Employee properties
+class Manager : Employee
+{
+    public void Manage() => Console.WriteLine($"{Name} is managing the team");
+}
+
+// Usage
+class Maintain
+{
+    public static void Main( string[] args )
+    {
+
+        var manager = new Manager { Name = "Alice" };
+        manager.Work();  // Output: Alice is working
+        manager.Manage(); // Output: Alice is managing the team
+
+    }
+}
+//2.Flexibility of Code Using Polymorphism
+//Polymorphism allows different classes to be treated as the same type, making the code more flexible.
+
+// Base class
+class Shape
+{
+    public virtual void Draw() => Console.WriteLine("Drawing a shape");
+}
+
+// Derived classes with different implementations
+class Circle : Shape
+{
+    public override void Draw() => Console.WriteLine("Drawing a circle");
+}
+
+class Rectangle : Shape
+{
+    public override void Draw() => Console.WriteLine("Drawing a rectangle");
+}
+class Allow
+{
+    public static void Main(string []args)
+    {
+
+        // Usage
+        Shape shape1 = new Circle();
+        Shape shape2 = new Rectangle();
+        shape1.Draw();  // Output: Drawing a circle
+        shape2.Draw();  // Output: Drawing a rectangle
+    }
+}
+//3.Secure Application Using Encapsulation
+//Encapsulation hides the implementation details and only exposes necessary functionality.
+
+class BankAccount
+{
+    private double balance;  // Private field
+
+    public void Deposit(double amount)
+    {
+        if (amount > 0)
+        {
+            balance += amount;
+            Console.WriteLine($"Deposited: {amount}");
+        }
+    }
+
+    public void ShowBalance() => Console.WriteLine($"Balance: {balance}");
+}
+
+class Amu
+{
+    public static void Main(string[]args)
+    {
+        // Usage
+        var account = new BankAccount();
+        account.Deposit(1000);
+        account.ShowBalance();  // Output: Balance: 1000
+    }
+}
+ 
+
+
+//4.Easily Scalable From Small to Larger Applications
+//OOP allows structuring a system into manageable and extensible components.
+// Base interface
+interface IEmployee
+{
+    void GetDetails();
+}
+
+// Implementations for scalability
+class Developer : IEmployee
+{
+    public void GetDetails() => Console.WriteLine("Developer details");
+}
+
+class Tester : IEmployee
+{
+    public void GetDetails() => Console.WriteLine("Tester details");
+}
+
+class Amul
+{
+    public static void Main(string[]args)
+    {
+        // Usage
+        IEmployee dev = new Developer();
+        IEmployee tester = new Tester();
+        dev.GetDetails();  // Output: Developer details
+        tester.GetDetails();  // Output: Tester details
+    }
+}
+
+
+//5.Easier Troubleshooting Due to Modularity
+//Since OOP organizes code into independent modules (classes), debugging becomes easier.
+
+class Logger
+{
+    public void Log(string message) => Console.WriteLine($"Log: {message}");
+}
+
+class Application
+{
+    private Logger logger = new Logger();
+
+    public void Run()
+    {
+        logger.Log("Application started");
+        Console.WriteLine("Running the application...");
+    }
+}
+
+// Usage
+class Amulu
+{
+    public static void Main(string[] args)
+    {
+        var app = new Application();
+        app.Run();
+        // Output: Log: Application started
+        //         Running the application...
+    }
+}
+
+22)//QUE:What is BOXING and UNBOXING.cs
+//ANS:
+//*BOXING-boxing is the process of converting from value type to reference type
+
+//code:
+class Programm
+{
+    public static void Main(string[] args)
+    {
+        //Boxing
+        int n = 10;
+        object obj = n;
+    }
+}
+
+//*UNBOXING-unboxing is the process of converting from reference type to value type  
+
+//code:
+class Programmm
+{
+    public static void Main(string[] args)
+    {
+        //unBoxing
+        int n = 10;
+        object obj = n;
+        int i = (int)obj;
+
+    }
+}
+
+
+23)//Que:What is constructor , when to use constructor in real application.cs
+//Ans:
+//*constructor name must be same in the class name
+//*A constructor is a specialized method in the class which gets executed when a class object is created.
+//* A constructor is used to set default values for the class
+
+24)//QUE:What is difference between is and as operators.cs
+//ANS:
+
+//*IS:
+//The  IS operator is used to check the type of an object
+
+//EX Code:
+
+class njhg
+{
+    static void Main(string[] args)
+    {
+        int i = 5;
+        bool check = i is int;
+
+        Console.WriteLine(check);//output : true
+    }
+}
+
+//*As:
+//AS operator is used to type safe  CONVERSION between  reference type or nullable type
+
+//EX code:
+class njhgj
+{
+    static void Main(string[] args)
+    {
+        object obj = "fthyj";
+        string s = obj as string;
+
+        Console.WriteLine(s);//output : fthyj
+    }
+}
+
+25)//QUE:what is difference between throw ex and throw
+
+
+//ANS:
+//*use only throw never use  throw ex
+
+
+//1️) throw ex:
+//throw ex resets the stack trace, meaning it loses the original exception details and starts a new exception from the catch block.
+//This makes debugging harder because you lose information about where the error originally occurred.
+
+
+
+//2️) throw (Without ex):
+//throw preserves the original exception stack trace, which is useful for debugging.
+//It rethrows the same exception without modifying its original source.
+
+
+//Example code:
+class Programcb
+{
+    static void Main()
+    {
+        try
+        {
+            DivideNumbers();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Caught in Main: " + ex.Message);
+            Console.WriteLine("Stack Trace: " + ex.StackTrace);
+        }
+    }
+
+    static void DivideNumbers()
+    {
+        try
+        {
+            int result = 10 / 0; // This will throw DivideByZeroException
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Logging Exception...");
+            //throw ex;  // This will reset the stack trace ❌
+            throw;       // This will preserve the original stack trace ✅
+        }
+    }
+}
+
+26)//QUE:What is IEnumerable in C#.cs
+//ANS:
+//*IEnumerable interface is used when we want to Iterate among our collection classes using a Foreach Loop
+using System;
+
+class hytd
+{
+    public static void main(String[] args)
+    {
+        List<Emp> employeees = new List<Emp>();
+
+
+        new Emp() { Id = 1, Name = "mythili" };
+        new Emp() { Id = 2, Name = "priya" };
+
+
+            foreach (Emp emp in employeees) 
+            {
+              Console.WriteLine(emp.Id+""+emp.Name);
+            }
+    }
+
+     
+
+}
+
+    
+public class Emp
+{
+    public int Id { get; set; }
+
+    public string Name { get; set; }
+}
+
+27)//QUE:What is inheritance? when to use inheritance
+//ANS:
+//*inheritance is create a parent-child relationship between two classes,
+//where child class will automatically get the properties and method of the parent
+
+//QUE:Why inheritance is important in developed software application?
+//ans:
+//* inheritance is good for :Reusability and abstraction of code
+
+
+//Example code 
+
+
+// Parent class (Base class)
+class Employee
+{
+    // Common properties for all employees
+    public string Name { get; set; }
+    public int Id { get; set; }
+
+    // Constructor
+    public Employee(string name, int id)
+    {
+        Name = name;
+        Id = id;
+    }
+
+    // Common method for all employees
+    public void Work()
+    {
+        Console.WriteLine($"{Name} (ID: {Id}) is working.");
+    }
+
+    public override bool Equals(object? obj)
+    {
+        return base.Equals(obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+    public override string? ToString()
+    {
+        return base.ToString();
+    }
+}
+
+// Child class (Derived class) inherits from Employee
+class Manager : Employee
+{
+    public string Department { get; set; }
+
+    public Manager(string name, int id, string department) : base(name, id)
+    {
+        Department = department;
+    }
+
+    // Additional method for Manager
+    public void Manage()
+    {
+        Console.WriteLine($"{Name} is managing the {Department} department.");
+    }
+}
+
+// Another child class demonstrating reusability
+class Developer : Employee
+{
+    public string ProgrammingLanguage { get; set; }
+
+    public Developer(string name, int id, string programmingLanguage) : base(name, id)
+    {
+        ProgrammingLanguage = programmingLanguage;
+    }
+
+    // Additional method for Developer
+    public void Code()
+    {
+        Console.WriteLine($"{Name} is coding in {ProgrammingLanguage}.");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Creating Manager object (inherits from Employee)
+        Manager mgr = new Manager("Alice", 101, "HR");
+        mgr.Work();  // Inherited method
+        mgr.Manage(); // Child-specific method
+
+        // Creating Developer object (inherits from Employee)
+        Developer dev = new Developer("Bob", 102, "C#");
+        dev.Work();  // Inherited method
+        dev.Code(); // Child-specific method
+    }
+}
+
+28)//QUE:What is method overloading , in how many ways a method can be overloaded
+//ANS:
+//*
+//*Method overloading is  method name must be same and number of argument should be different
+//suppose number of argument should be same to write diff datatype.
+
+
+//Example code 
+class Calculator
+{
+    // 1️⃣ Overloading with different number of parameters
+
+    public int Add(int a, int b)
+    {
+        return a + b;
+    }
+
+    public int Add(int a, int b, int c)  // Extra parameter
+    {
+        return a + b + c;
+    }
+
+    // 2️⃣ Overloading with different data types
+    public double Add(double a, double b)
+    {
+        return a + b;
+    }
+
+    // 3️⃣ Overloading with different order of parameters
+    public string Add(string message, int number)
+    {
+        return message + number;
+    }
+
+    public string Add(int number, string message) // Different order
+    {
+        return number + message;
+    }
+}
+
+class Programkjh
+{
+    static void Main()
+    {
+        Calculator calc = new Calculator();
+
+        Console.WriteLine(calc.Add(5, 10));         // Calls int Add(int, int)
+        Console.WriteLine(calc.Add(5, 10, 15));     // Calls int Add(int, int, int)
+        Console.WriteLine(calc.Add(5.5, 10.5));     // Calls double Add(double, double)
+        Console.WriteLine(calc.Add("Result: ", 100)); // Calls string Add(string, int)
+        Console.WriteLine(calc.Add(200, " is the result")); // Calls string Add(int, string)
+    }
+}
+
+29)//QUE:what is oops what is the main concepts of oops
+//ANS:
+//*oops is nothing but collection of few concepts
+//*oops stands for object oriented programming system.
+//*which means it is a way to create a software around object
+//*oops provide a clear structure for the software and web application 
+
+30)//QUE:What is polymorphism and what are its type.cs
+//ANS:
+//* polymorphism is the ability of a variable,object,or function to take on MULTIPLE FORMS 
+
+
+31)//QUE:What is "Static" class ?when to use it?
+//Ans:
+// *A static is a class which object can not be create,and which can not be inherited
+// *Static class are used as containers for static member like method ,constructor and others. 
+
+public static class Mycollege
+{
+    public static string colname;
+    public static string address;
+
+    //static constructor
+    static Mycollege()
+    {
+        colname = "A/9/bc College";
+    }
+
+    public static void College()
+    {
+        Console.WriteLine("computer");
+    }
+
+}
+
+
+32)//QUE:What is the diff between an abstract class and an interface .cs
+//Ans:
+//*Abstract
+//Abstract class contains both Declaration & Definition of the methods
+//Abstract class must be Abstract Keywork
+//Abstract Class does not support multiple inheritance
+//Abstract class can have constructors
+
+
+//Abstract Example code
+using System;
+
+// Abstract Class
+abstract class Animal
+{
+    public string Name { get; set; }
+
+    // Constructor in Abstract Class
+    public Animal(string name)
+    {
+        Name = name;
+    }
+
+    // Abstract Method (No definition, must be implemented by derived class)
+    public abstract void MakeSound();
+
+    // Non-Abstract Method (Has definition, can be inherited)
+    public void Eat()
+    {
+        Console.WriteLine($"{Name} is eating.");
+    }
+}
+
+// Derived Class (Inheriting from Abstract Class)
+class Dog : Animal
+{
+    public Dog(string name) : base(name) { }
+
+    // Implementing Abstract Method
+    public override void MakeSound()
+    {
+        Console.WriteLine($"{Name} barks: Woof Woof!");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Dog dog = new Dog("Buddy");
+        dog.MakeSound(); // Calls overridden method
+        dog.Eat();       // Calls inherited method
+    }
+}
+
+/*Output
+
+    Buddy barks: Woof Woof!
+    Buddy is eating.
+*/
+
+//*Interface 
+//Interface should contain Declaration of methods
+//Interface must be Interface Keywork
+//Interface support multiple inheritance
+//Interface  do not have constructors
+
+
+//Interface Example code
+
+using System;
+
+// Interface Declaration
+interface IAnimal
+{
+    void MakeSound(); // Method Declaration (no definition)
+}
+
+// Another Interface
+interface IWalkable
+{
+    void Walk();
+}
+
+// Class Implementing Multiple Interfaces
+class Dog : IAnimal, IWalkable
+{
+    public void MakeSound() // Implementing IAnimal
+    {
+        Console.WriteLine("Dog barks: Woof Woof!");
+    }
+
+    public void Walk() // Implementing IWalkable
+    {
+        Console.WriteLine("Dog is walking.");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Dog dog = new Dog();
+        dog.MakeSound(); // Calls implemented method from IAnimal
+        dog.Walk();      // Calls implemented method from IWalkable
+    }
+}
+/*Output:
+
+Dog barks: Woof Woof!
+Dog is walking.*/
+
+
+33)//QUE:What is the difference between  OUT and REF parameters.cs
+//ANS:
+//*Definition:
+//By using ref and out keyword we can pass parameters by reference 
+//*Use:
+//When you want to return more then one value from method then you can use out and ref parameters
+
+
+//REF:
+//ref must be initialize before passing a parameter
+//initialize not necessary you can comment this line still fine
+
+//OUT
+//No need to initialize out parameter before passing it
+//out parameter must be initialize before return
+
+
+//EX code:
+
+
+using System.Diagnostics.Metrics;
+using System.Net.NetworkInformation;
+
+class Programl
+{
+    // Method using ref parameter (must be initialized before passing)
+    static void ModifyValuesUsingRef(ref int num1, ref int num2)
+    {
+        num1 = num1 * 2;  // Modify the value of num1
+        num2 = num2 + 10; // Modify the value of num2
+    }
+
+    // Method using out parameter (no need to initialize before passing, but must assign a value inside)
+    static void CalculateValuesUsingOut(out int sum, out int product)
+    {
+        sum = 20 + 10;     // Assign value to sum
+        product = 20 * 10; // Assign value to product
+    }
+
+    static void Main()
+    {
+        // Example using ref parameters
+        int a = 5, b = 3;
+        Console.WriteLine($"Before ModifyValuesUsingRef: a = {a}, b = {b}");
+
+        // Initialize variables before passing to ref method
+        ModifyValuesUsingRef(ref a, ref b);
+        Console.WriteLine($"After ModifyValuesUsingRef: a = {a}, b = {b}");
+
+        // Example using out parameters
+        int resultSum, resultProduct;
+        CalculateValuesUsingOut(out resultSum, out resultProduct); // No need to initialize before passing
+        Console.WriteLine($"Using out parameters: Sum = {resultSum}, Product = {resultProduct}");
+    }
+}
+
+
+//output:
+/*Before ModifyValuesUsingRef: a = 5, b = 3
+After ModifyValuesUsingRef: a = 10, b = 13
+Using out parameters: Sum = 30, Product = 200*/
+
+
+34)//QUE:What is the difference between  Readonly and Constant variable.cs
+//ANS:
+//*Readonly:
+//using readonly field ,we can assign values in Declaration a well as in the constructor part
+// the value of the readonly field can be changed  
+//Readonly field can be create using readonly keyword
+//Readonly is a RUNTIME Constant
+
+//*Constant:
+//using const fields we can assign values in DECLARATION PART ONLY
+// the value of the Constant field can  not be changed  
+//Constant field can be create using const keyword
+//Constant is a COMPILE time Constant
+
+//Readonly code:
+class jc
+{
+    public readonly int i = 100;
+
+    public readonly int i2;
+
+    public jc(int b)
+    {
+        i2 = b + i;
+        Console.WriteLine(i);
+        Console.WriteLine(i2);
+    }
+}
+class Hhj
+{
+    public static void Main(string[] args)
+    {
+        jc j = new jc(200);
+        
+
+    }
+}
+
+
+
+//Readonly code:
+class jcc
+{
+    public const int ii = 100;
+
+    public const int i22;
+
+    public jcc()
+    {
+        ii = 20;
+    }
+}
+class Hhjhj
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine(ii);
+
+
+    }
+}
+
+
+35)
+//QUE:What is the difference between ArrayList and Hashtable.cs
+//ANS:
+//ArrayList
+//*ArrayList is a  size flexible
+//*Arraylist is a not strongly type
+//Arraylist is slower then array because boxing and unboxing
+
+
+
+using System.Collections;
+
+class Addm
+{
+    public static void Main(string[] args)
+    {
+
+
+
+        ArrayList arrayList = new ArrayList(); //size flexible,not strongly type
+        arrayList.Add(1);
+        arrayList.Add(2);
+        arrayList.Add("AMU");
+    }
+}
+
+//Hashtable
+//* in Hashtable we can Add Item/value with the Key
+
+
+class Addmjh
+{
+    public static void Main(string[] args)
+    {
+        Hashtable hashtable = new Hashtable();
+        hashtable.Add(1, "Mythili");
+        hashtable.Add("riya", "amu");
+
+
+
+    }
+}
+
+36)//QUE:What is the difference between "Continue" and "break" statement.cs
+//ANS:
+
+//*Continue:
+//Continue statement is used to skip the remaining statements inside the loop
+//and transfers the control to the beginning of the loop
+
+//Ex Code:
+
+class fgh
+{
+    public static void Main(string[] args)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+             if (i == 3)
+            {
+                continue;
+            }
+            Console.WriteLine(i);   //output :0,1,2,4
+        }
+
+    }
+}
+
+//*Break:
+//Break statement breaks the loop .it makes the control of the program to exit the loop
+
+//Ex Code:
+
+class fghuyt
+{
+    public static void Main(string[] args)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (i == 3)
+            {
+                break;
+            }
+            Console.WriteLine(i);   //output :0,1,2
+        }
+
+    }
+}
+
+
+37)//QUE:What is the difference between IEnumerable and IQueryable in c# ,Why to use IQueryable in SQL Server.cs
+//ANS:
+//*IQueryable:
+//IQueryable is also like IEnumerable and its use to iterate  sql query collection from data
+
+
+//EX Code:
+
+public class Customer
+{
+    public int CustomerId { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+public class ApplicationDbContext : DbContext
+{
+    public DbSet<Customer> Customers { get; set; }
+
+    // Define your connection string here
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer("YourConnectionStringHere");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        using (var dbContext = new ApplicationDbContext())
+        {
+            // IQueryable for filtering customers older than 18
+            IQueryable<Customer> query = dbContext.Customers.Where(c => c.Age > 18);
+
+            // At this point, no query is executed yet (deferred execution)
+
+            // Execute the query and materialize the results into a List
+            List<Customer> customers = query.ToList();
+
+            // Iterating over the results
+            foreach (var customer in customers)
+            {
+                Console.WriteLine($"Customer ID: {customer.CustomerId}, Name: {customer.Name}, Age: {customer.Age}");
+            }
+        }
+    }
+}
+
+
+38)//QUE:what is the difference between Method overriding and Method hiding.cs
+//ANS:
+//*Method Overriding:
+//*Definition: Method overriding allows a derived class to provide a new implementation of a method that is already defined in its base class.
+
+//*Rules:
+//Requires inheritance(parent-child relationship).
+//The method in the base class must be marked as virtual.
+//The method in the derived class must use override.
+//Purpose: Used when we want the derived class to modify the behavior of the base class method.
+
+
+//Example code :
+
+
+class Parent
+{
+    public virtual void Show()  // Base class method marked as 'virtual'
+    {
+        Console.WriteLine("Parent class Show method");
+    }
+}
+
+class Child : Parent
+{
+    public override void Show()  // Derived class method using 'override'
+    {
+        Console.WriteLine("Child class Show method (Overridden)");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Parent obj1 = new Parent();
+        obj1.Show();  // Calls Parent's Show() method
+
+        Child obj2 = new Child();
+        obj2.Show();  // Calls overridden method in Child class
+
+        Parent obj3 = new Child();
+        obj3.Show();  // Calls overridden method due to polymorphism
+    }
+}
+
+/*output
+Parent class Show method
+Child class Show method(Overridden)
+Child class Show method(Overridden)*/
+
+
+//Method Hiding:
+//*Definition: Method hiding occurs when a derived class defines a method that has the same name as a method in the base class, but without using override.
+
+//*Rules:
+//The base class method does not have to be virtual.
+//The derived class method must use the new keyword to explicitly indicate hiding.
+//Purpose: Used when we want the derived class to provide a completely independent implementation of the method.
+
+
+
+//Example code
+
+class Parent
+{
+    public void Show()  // No 'virtual' keyword
+    {
+        Console.WriteLine("Parent class Show method");
+    }
+}
+
+class Child : Parent
+{
+    public new void Show()  // 'new' keyword used for hiding
+    {
+        Console.WriteLine("Child class Show method (Hiding)");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Parent obj1 = new Parent();
+        obj1.Show();  // Calls Parent's Show() method
+
+        Child obj2 = new Child();
+        obj2.Show();  // Calls Child's Show() method
+
+        Parent obj3 = new Child();
+        obj3.Show();  // Calls Parent's Show() method (hiding prevents polymorphism)
+    }
+}
+/*Output:
+Parent class Show method
+Child class Show method(Hiding)
+Parent class Show method*/
+
+39)//QUE:What is the difference between  method overloading and overriding.cs
+//ANS:
+//*Method overloading
+//Method overloading is a method name must be same and number of argument should be different suppose number of argument should be same to write different datatype.
+//Method overloading doesn't need inheritance .its in same class
+
+//*Overriding
+//Method overriding is having methods with the SAME NAME and SIGNATURE but in different classes
+//Overriding uses VIRTUAL keyword for base class method and OVERRIDE keyword for derived class method
+//Method overriding  need inheritance(base class/derived class) .its  not possible in same class
+
+40)//QUE:What is the difference between Array and Arraylist.cs 
+//Ans:
+
+//Array
+//*Array is a fixed length size
+//*Array is a strongly type
+//*Array is better then array list
+
+//Array List
+//*ArrayList is a  size flexible
+//*Arraylist is a not strongly type
+//Arraylist is slower then array because boxing and unboxing
+
+
+
+using System.Collections;
+
+class Add
+{
+    public static void Main(string[] args)
+    {
+
+        int[] arr = { 1, 2, 3 }; //fixed length,strongly type 
+
+
+        ArrayList arrayList = new ArrayList(); //size flexible,not strongly type
+        arrayList.Add(1);
+        arrayList.Add(2);
+        arrayList.Add("AMU");
+    }
+}
+
+41)//QUE:What Is the difference between stored procedure and function
+//Ans:
+//*
+//1️⃣ Stored Procedure
+//✅ A Stored Procedure is a set of SQL statements that perform a specific task.
+//✅ It can return multiple result sets and can also modify data (INSERT, UPDATE, DELETE).
+//✅ It can have input/output parameters.
+//✅ It cannot be used inside a SELECT statement.
+//✅ It is generally used for performing database operations rather than calculations.
+
+//Example: Stored Procedure
+
+
+using System.Collections.Generic;
+using System.Net.NetworkInformation;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+--Creating a Stored Procedure
+CREATE PROCEDURE GetEmployeeDetails
+    @EmployeeID INT
+AS
+BEGIN
+    SELECT EmployeeID, Name, Department FROM Employees WHERE EmployeeID = @EmployeeID;
+END;
+
+--Executing the Stored Procedure
+EXEC GetEmployeeDetails @EmployeeID = 1;
+
+
+//2️⃣ Function
+//✅ A Function is used to perform calculations and return a single value or table.
+//✅ It must return a value (either a scalar value or a table).
+//✅ It cannot modify database data (i.e., no INSERT, UPDATE, DELETE).
+//✅ It can be used inside SELECT statements.
+//✅ It does not support output parameters.
+
+//Example: Function(Scalar Function)
+--Creating a Function to Calculate Bonus
+CREATE FUNCTION CalculateBonus (@Salary DECIMAL(10,2))
+RETURNS DECIMAL(10,2)
+AS
+BEGIN
+    DECLARE @Bonus DECIMAL(10,2);
+SET @Bonus = @Salary * 0.10; --10 % Bonus Calculation
+RETURN @Bonus;
+END;
+
+--Using the Function in a SELECT Query
+SELECT Name, Salary, dbo.CalculateBonus(Salary) AS Bonus FROM Employees;
+
+
+42)//QUE:What is the difference between "String" and "StringBuilder".cs
+//ANS:
+//*STRING:
+
+//* String is immutable in c#
+//* it means if you defined one string then you couldn't modify it.
+//Every time you will assign some value to it ,it will create a new string
+
+//Example code string:
+using System;
+using System.Text;
+
+class Program
+{
+    static void Main()
+    {
+        string str = "Hello";
+        str = str + " World";  // Creates a new string, old one is discarded
+
+        Console.WriteLine(str); // Output: Hello World
+    }
+}
+//*STRINGBUILDER
+//Mutability: A StringBuilder is mutable, meaning it allows modification of the same string object without creating new objects in memory each time.
+
+
+
+//Example code STRINGBUILDER
+using System;
+using System.Text;
+class Program
+{
+    static void Main()
+    {
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.Append(" World");  // Modifies the existing object
+
+        Console.WriteLine(sb.ToString()); // Output: Hello World
+    }
+}
+
+
+43)//QUE:What is the difference between VAR and DYNAMIC.cs
+//ANS:
+//*VAR:
+//the type of the variable is decided by the compiler at compile time
+
+//EX Code:
+class Hfgh
+{
+    static void Main(string[] args)
+    {
+        var a = 10;
+        a = "fgt";
+       Console.WriteLine(a);
+    }
+}
+
+
+//*Dynamic:
+// the type of the variable is decided at run time
+
+//EX Code:
+class HHJ
+{
+    static void Main(string[] args)
+    {
+        dynamic a = 10;
+        a = "fgt";
+        Console.WriteLine(a);
+    }
+}
+
+44)//QUE:What is the difference between IEnumerable and IEnumerator.cs
+//ANS:
+//*IEnumrerable is a box that contains ,IEnumerator functionality inside it
+
+// EX IEnumerable:
+class hytdjh
+{
+    public static void main(String[] args)
+    {
+        List<Empp> employeees = new List<Empp>();
+
+
+        new Empp() { Id = 1, Name = "mythili" };
+        new Empp() { Id = 2, Name = "priya" };
+
+
+        foreach (Empp emp in employeees)
+        {
+            Console.WriteLine(emp.Id + "" + emp.Name);
+        }
+    }
+
+
+
+}
+
+
+public class Empp
+{
+    public int Id { get; set; }
+
+    public string Name { get; set; }
+}
+
+
+45)//QUE:What is the purpose of params keyword.cs
+//ANS:
+//*Params keyword is used as a parameter which can take the VARIABLE NUMBER OF ARGUMENTS (OR) Any Number of argument
+//It is useful when you don’t know the exact number of arguments to pass in advance, but you still want to allow flexibility in the method's parameters.
+
+//EX code :
+
+
+class Programk
+{
+    // Method using the 'params' keyword to accept variable number of arguments or any Number of argument
+    static void PrintNumbers(params int[] numbers)
+    {
+        foreach (int number in numbers)
+        {
+            Console.WriteLine(number);
+        }
+    }
+
+    static void Main(string[]args)
+    {
+        // Call method with different numbers of arguments
+        Console.WriteLine("Calling PrintNumbers with 3 arguments:");
+        PrintNumbers(1, 2, 3);  // Pass 3 arguments
+
+        Console.WriteLine("\nCalling PrintNumbers with 5 arguments:");
+        PrintNumbers(10, 20, 30, 40, 50);  // Pass 5 arguments
+
+        Console.WriteLine("\nCalling PrintNumbers with no arguments:");
+        PrintNumbers();  // Pass no arguments
+    }
+}
+
+
+46)//QUE:What is the purpose of "using" keyword in c#.cs
+//ANS:
+//*The using keyword is used to import namespaces so that you don't need to specify the full path to a class every time you reference it in your code.
+//* the using statement ensure that DISPOSE() method of the class object is called even if an exception occure
+
+
+47)//QUE:What is "this" keyword in C#?when to use it?
+//ANS:
+//* this keyword is used to refer to the CURRENT INSTANCE of the Class
+//* this keyword avoids the name confusion between class field and constructor parameters
+
+class Student
+{
+    int id;
+    string name;
+    public Student(int id, string name)
+    {
+        this.id = id;
+        this.name = name;
+    }
+    public void getId()
+    {
+        Console.WriteLine(id + name);
+    }
+}
+class Jg
+{
+    public static void Main(string[] args)
+    {
+        Student student = new Student(1,"hgf");
+        student.getId();
+    }
+}
+
+
+48)//QUE:What you mean by delegate ,when to use them.cs
+//ANS:
+//*A delegate is a variable that  hold the REFERENCE TO  METHOD or POINTER TO A FUNCTION
+//*A delegate can refer to more than one method of same return type and parameters
+
+
+//when to use them:
+//when we need to pass method as a parameter
+
+//EX code:
+
+delegate void Calculators(int x, int y);
+class Pro
+{
+    public static void Add(int a, int b)
+    {
+        Console.WriteLine(a +b);
+    }
+    public static void Mul(int a, int b)
+    {
+        Console.WriteLine(a * b);
+    }
+
+
+    public static void Main(string[] args)
+    {
+        Calculators calculator = new Calculators(Add);
+        calculator(1, 2);
+
+    }
+
+}
+
