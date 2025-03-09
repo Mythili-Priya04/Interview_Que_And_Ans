@@ -1,0 +1,584 @@
+1)--QUE:What is the difference between Stored Procedure and Functions?
+--Ans:
+-- SP may or may not return a value but function must return a value  
+-- SP can have input/output parameters but  function can have only input parameter
+-- we can call function inside sp but cannot call sp from a function
+-- we cannot use sp in sql statments like SELECT,UPDATE,INSERT,DELETE,MERGE,etc.but we can use them with function
+
+
+--Stored Procedure Example:
+
+-- Create a Stored Procedure with input and output parameters
+CREATE PROCEDURE GetEmployeeDetails
+    @EmployeeID INT,
+    @EmployeeName NVARCHAR(100) OUTPUT
+AS
+BEGIN
+    -- Set the output parameter
+    SELECT @EmployeeName = FirstName + ' ' + LastName
+    FROM Employees
+    WHERE EmployeeID = @EmployeeID;
+END;
+
+-- Call the stored procedure
+DECLARE @EmpName NVARCHAR(100);
+EXEC GetEmployeeDetails @EmployeeID = 1, @EmployeeName = @EmpName OUTPUT;
+SELECT @EmpName AS EmployeeName;
+
+
+
+--Function Example:
+
+-- Create a Function to return an employee's full name
+CREATE FUNCTION GetEmployeeName (@EmployeeID INT)
+RETURNS NVARCHAR(100)
+AS
+BEGIN
+    DECLARE @EmployeeName NVARCHAR(100);
+    SELECT @EmployeeName = FirstName + ' ' + LastName
+    FROM Employees
+    WHERE EmployeeID = @EmployeeID;
+    RETURN @EmployeeName;
+END;
+
+-- Use the function inside a SELECT statement
+SELECT dbo.GetEmployeeName(1) AS EmployeeName;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2)-- QUE:What is the difference between primary key and unique key?
+
+--ANS:
+--(*)primary key
+--  Primary key can't Accept Null Values
+--  create clustered index
+--  only one primary key in a table
+
+--(*)Unique Key
+--  Unique Key can Accept only one Null Value
+--  create non-clustered index
+--  more then one unique key in a table
+
+
+
+-- Create a table with Primary Key and Unique Key
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,  -- Primary Key can't accept NULL values
+    FirstName NVARCHAR(50) NOT NULL,
+    LastName NVARCHAR(50) NOT NULL,
+    Email NVARCHAR(100) UNIQUE, -- Unique Key can accept only one NULL value
+    PhoneNumber NVARCHAR(15) UNIQUE  -- More than one unique key in a table
+);
+
+-- Inserting values into the Employees table
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Email, PhoneNumber)
+VALUES (1, 'John', 'Doe', 'john.doe@example.com', '123-456-7890');
+
+-- This will fail because EmployeeID is the primary key, and it can't accept NULL values
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Email, PhoneNumber)
+VALUES (NULL, 'Jane', 'Smith', 'jane.smith@example.com', '987-654-3210');
+
+-- This will succeed because Email and PhoneNumber are unique keys, and they can accept one NULL value
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Email, PhoneNumber)
+VALUES (2, 'Jane', 'Smith', NULL, '987-654-3210');
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3)--QUE:What is the difference between clustered and non-clustered index?
+--ANS:
+--(*)clustered index:
+-- A clustered index defines the order in which data is physically stored in a table for Ex: Dictionary
+-- table data can have only one clustered index 
+--Clustor index is faster
+
+--(*)non-clustered index:
+--A Non-Clustered index is stored at one place and table data is stored in another place.
+--so this index is not physically stored Ex :Book index
+-- table data can have Multiple non-clustered index 
+--non-Clustor index is slower
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4)--QUE:What is the difference between  Delete ,Truncate and Drop commands? 
+--Ans:
+--(*)Delete:
+--1)its a DML
+--2)its used to delete the one or more rows  of a table
+--3)it can be roolback
+
+--query:
+Delete from Employee where Emp_id=5;
+
+--(*)TRUNCATE
+--1)its a DDL
+--2)its used to delete all rows from the table
+--3)its can be rollback
+--4)truncate will remove all the records from the table employee but not the structure  
+
+truncate table Employee;
+
+DROP
+
+--1)it is a DDL
+--2)It is used to drop the whole table with Structure/Schema  
+--3)it can not be rollback                                  
+--4)it will remove the structure/schema also                
+
+Drop table Employee;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5)--QUE:What is Sub query or Nested query or Inner query in SQL?
+--ANS:
+-- A Subquery is a query with in another sql query and embedded within the WHERE clause
+
+--Query:
+select lastname,firstname
+from employee
+where officecode in (select officecode from office where country ='USA');
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6)--QUE:What is self-join?
+--ANS:
+--A self join is a join table to itself
+
+--Query:
+
+SELECT e.firstname AS Employee,
+M.FirstName AS Manager
+FROM Employees E LEFT JOIN 
+Employees M
+ON E.ManagerID = M.EmployeeID;
+order by manager;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7)--QUE:What is Cursor? why to Avoid them?
+--ANS:
+-- A database Cursor is a control which enables iteration over the rows or records in the table.
+
+--5 STEP:
+--1.Declare
+--2.open
+--3.Fetch using while loop
+--4.Close
+--5.Deallocate
+
+--(*)why to Avoid them?
+-- a cursor is memeory resident its occupies lots of memory from your system which is not good for performance
+
+--Cursor Query:
+
+-- Declare the cursor
+DECLARE EmployeeCursor CURSOR FOR
+SELECT EmployeeID, FirstName, LastName
+FROM Employees
+WHERE Department = 'Sales';
+
+-- Declare variables to hold the fetched data
+DECLARE @EmployeeID INT;
+DECLARE @FirstName NVARCHAR(50);
+DECLARE @LastName NVARCHAR(50);
+
+-- Open the cursor
+OPEN EmployeeCursor;
+
+-- Fetch the first row from the cursor
+FETCH NEXT FROM EmployeeCursor INTO @EmployeeID, @FirstName, @LastName;
+
+-- Use a WHILE loop to iterate through the cursor rows
+WHILE @@FETCH_STATUS = 0
+BEGIN
+    -- Process the fetched data
+    PRINT 'Employee ID: ' + CAST(@EmployeeID AS NVARCHAR) + 
+          ', Name: ' + @FirstName + ' ' + @LastName;
+
+    -- Fetch the next row
+    FETCH NEXT FROM EmployeeCursor INTO @EmployeeID, @FirstName, @LastName;
+END;
+
+-- Close the cursor
+CLOSE EmployeeCursor;
+
+-- Deallocate the cursor
+DEALLOCATE EmployeeCursor;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+8)--QUE:What is Cursor? why to Avoid them?
+--ANS:
+-- A database Cursor is a control which enables iteration over the rows or records in the table.
+
+--5 STEP:
+--1.Declare
+--2.open
+--3.Fetch using while loop
+--4.Close
+--5.Deallocate
+
+--(*)why to Avoid them?
+-- a cursor is memeory resident its occupies lots of memory from your system which is not good for performance
+
+--Cursor Query:
+
+-- Declare the cursor
+DECLARE EmployeeCursor CURSOR FOR
+SELECT EmployeeID, FirstName, LastName
+FROM Employees
+WHERE Department = 'Sales';
+
+-- Declare variables to hold the fetched data
+DECLARE @EmployeeID INT;
+DECLARE @FirstName NVARCHAR(50);
+DECLARE @LastName NVARCHAR(50);
+
+-- Open the cursor
+OPEN EmployeeCursor;
+
+-- Fetch the first row from the cursor
+FETCH NEXT FROM EmployeeCursor INTO @EmployeeID, @FirstName, @LastName;
+
+-- Use a WHILE loop to iterate through the cursor rows
+WHILE @@FETCH_STATUS = 0
+BEGIN
+    -- Process the fetched data
+    PRINT 'Employee ID: ' + CAST(@EmployeeID AS NVARCHAR) + 
+          ', Name: ' + @FirstName + ' ' + @LastName;
+
+    -- Fetch the next row
+    FETCH NEXT FROM EmployeeCursor INTO @EmployeeID, @FirstName, @LastName;
+END;
+
+-- Close the cursor
+CLOSE EmployeeCursor;
+
+-- Deallocate the cursor
+DEALLOCATE EmployeeCursor;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9)--QUE:What is Constraint is SQL ? what are its type.
+
+--Ans:
+--SQL constrains are used to specify rules for the data in table.
+--constraints are used to limit the type of data that can go into a table
+
+--1)PRIMARY KEY = is a field which can uniquely identify each row in a table
+--2)NOT NULL = constraint tells that we cannot store a null values
+--3)FOREIGN KEY REFERENCES = is a field which can uniquely identify each row in an another table.
+--4)CHECK=constraint in helps to validate the values of a column to meet a particular condition
+--5)DEFAULT = DEFAULT constrainer specifies a default value for the column when no value is specified by the user
+--6)UNIQUE= constraint tells that all the values in the column must be unique
+
+
+--Query:
+Create table Students(ID int NOT NULL PRIMARY KEY,Name varchar(255) NOT NULL,CourseID int FOREIGN KEY REFERENCES Courses(CourseID),Age int NOT NULL CHECK(AGE>=18),AdmissionDate date DEFAULT GETDATE(),CONSTRAINT UC_Student UNIQUE(ID,Name) ); 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10)--QUE:What is Clustered index?
+--ANS:
+-- A clustered index defines the order in which data is physically stored in a table
+-- table data can be sorted in only way,therfore ,there can be only one clustered index per table
+--if you set  a primary key on a column then it will automatically create  a clustered index on the particular column
+
+
+--QUERY:
+
+--1. Clustered Index with Primary Key
+
+-- Create a table with a PRIMARY KEY (Clustered Index will be created automatically on EmployeeID)
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,  -- This will automatically create a Clustered Index on EmployeeID
+    FirstName NVARCHAR(50),
+    LastName NVARCHAR(50),
+    Department NVARCHAR(50)
+);
+
+
+--2. Creating a Clustered Index Explicitly
+
+-- Create a table without a primary key
+CREATE TABLE Employees (
+    EmployeeID INT,
+    FirstName NVARCHAR(50),
+    LastName NVARCHAR(50),
+    Department NVARCHAR(50)
+);
+
+-- Create a Clustered Index explicitly on EmployeeID
+CREATE CLUSTERED INDEX idx_EmployeeID
+ON Employees (EmployeeID);
+
+
+--3. What Happens if You Try to Create a Second Clustered Index?
+
+
+-- Attempting to create a second Clustered Index on the same table (this will fail)
+CREATE CLUSTERED INDEX idx_EmployeeID_2
+ON Employees (FirstName);  -- Error: Cannot create more than one clustered index on a table
+
+
+
+--4.-Example Query Using the Clustered Index:
+
+-- Query that benefits from the clustered index on EmployeeID
+SELECT * FROM Employees
+WHERE EmployeeID BETWEEN 1 AND 10;  -- The query will be faster because of the clustered index on EmployeeID
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+11)--QUE:What is Auto Increment / Identity column in sql server?
+--ANS:
+-- Auto-increment allows a unique number to be generate automatically when a new record is insert into a table
+-- Mosttly it is the primary key only
+
+--query:
+ create table persons(ID int IDENTITY(1,1) PRIMARY KEY,firstname varchar(50),lastname varchar(50));
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+12)-- QUE:What is a View:
+--ANS:
+--  A view in sql  is a VIRTUAL table that is based on the result of a sql query .
+-- it does not stored data physically
+
+
+
+--Query:
+create view india_customer as
+select customername,contactname 
+from customer
+where country ='india';
+
+select * india_customer
+
+
+
+--QUE:in a view querey is stored but the data is never stored like a table then why to use views
+--ANS:
+--1)indexed views to improve the performance 
+--2)Extra security - DBA can hide the actual table names and expose views for read opertions
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+13)--QUE:What is Non-Clustered Index?
+--Ans:
+--A Non-Clustered index is stored at one place and table data is stored in another place.so this index is not physically stored
+-- A table can have multiple non-clustered index in a table
+
+
+--Step 1: Create a Table
+
+-- Create a Products table
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,  -- Clustered index automatically created on ProductID
+    ProductName NVARCHAR(100),
+    Price DECIMAL(10, 2)
+);
+
+
+--Step 2: Create a Non-Clustered Index on the ProductName Column
+
+
+-- Create a Non-Clustered Index on the ProductName column
+CREATE NONCLUSTERED INDEX idx_ProductName
+ON Products (ProductName);
+
+
+
+--Step 3: Query Using the Non-Clustered Index
+
+-- Query that will use the Non-Clustered Index on ProductName
+SELECT * FROM Products
+WHERE ProductName = 'Laptop';
+
+
+
+--4.Handling Multiple Non-Clustered Indexes
+
+-- Create another Non-Clustered Index on the Price column
+CREATE NONCLUSTERED INDEX idx_Price
+ON Products (Price);
+
+
+--5.Dropping a Non-Clustered Index
+
+-- Drop the Non-Clustered Index on ProductName
+DROP INDEX idx_ProductName ON Products;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+14)--QUE:What are Trigger and Type of Triggers?
+--Ans:
+--Triggers are stored programs ,which are AUTOMATICLLY execute or fired when some events(insert,delete,and update)occur.
+
+--Types of Triggers in SQL Server:
+
+--DML Triggers (Data Manipulation Language Triggers):
+--These triggers respond to changes made to the data in a table (e.g., INSERT, UPDATE, DELETE).
+
+--AFTER Trigger: Executes after the data modification is completed.
+--INSTEAD OF Trigger: Executes in place of the data modification.
+--DDL Triggers (Data Definition Language Triggers):
+--These triggers respond to events that alter the structure of a table (e.g., CREATE, ALTER, DROP).
+
+--LOGON and LOGOFF Triggers:
+--These triggers respond to user login and logout events in SQL Server (available in some versions).
+
+
+--QUERY:
+-- Create an example table for demonstration
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName NVARCHAR(50),
+    LastName NVARCHAR(50),
+    Salary INT
+);
+
+-- Create an Audit Table to track changes
+CREATE TABLE EmployeeAudit (
+    AuditID INT IDENTITY PRIMARY KEY,
+    EmployeeID INT,
+    ChangeDate DATETIME,
+    ChangeType NVARCHAR(10)
+);
+
+-- Create an AFTER Trigger that logs changes after an INSERT operation
+CREATE TRIGGER trg_AfterEmployeeInsert
+ON Employees
+AFTER INSERT
+AS
+BEGIN
+    -- Insert a record into the EmployeeAudit table when a new employee is added
+    INSERT INTO EmployeeAudit (EmployeeID, ChangeDate, ChangeType)
+    SELECT EmployeeID, GETDATE(), 'INSERT'
+    FROM inserted;
+END;
+
+
+--2. INSTEAD OF Trigger:
+--An INSTEAD OF Trigger is fired instead of the actual data modification (INSERT, UPDATE, or DELETE).
+
+-- Create an INSTEAD OF Trigger for handling INSERT operations
+CREATE TRIGGER trg_InsteadOfInsert
+ON Employees
+INSTEAD OF INSERT
+AS
+BEGIN
+    -- Insert a new employee, but only if the Salary is greater than 0
+    IF EXISTS (SELECT 1 FROM inserted WHERE Salary > 0)
+    BEGIN
+        -- Perform the insert as usual
+        INSERT INTO Employees (EmployeeID, FirstName, LastName, Salary)
+        SELECT EmployeeID, FirstName, LastName, Salary FROM inserted;
+    END
+    ELSE
+    BEGIN
+        -- Otherwise, do not insert and print a message
+        PRINT 'Salary must be greater than 0. No rows were inserted.';
+    END;
+END;
+
+
+--3. DELETE Trigger:
+--You can create a trigger that fires after a DELETE operation is performed on a table.
+
+-- Create a trigger to log deletions
+CREATE TRIGGER trg_AfterEmployeeDelete
+ON Employees
+AFTER DELETE
+AS
+BEGIN
+    -- Log the deletion into the EmployeeAudit table
+    INSERT INTO EmployeeAudit (EmployeeID, ChangeDate, ChangeType)
+    SELECT EmployeeID, GETDATE(), 'DELETE'
+    FROM deleted;
+END;
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+15)--QUE:What are the type of joins in sql server?
+--ANS:
+--INNER JOIN: Returns only the rows with matching values in both tables.
+--LEFT OUTER JOIN: Returns all rows from the left table and matching rows from the right table, with NULL where there is no match.
+--RIGHT OUTER JOIN: Returns all rows from the right table and matching rows from the left table, with NULL where there is no match.
+--FULL OUTER JOIN: Returns all rows when there is a match in one of the tables, with NULL for non-matching rows.
+
+
+--:INNER JOIN QUERY:
+
+-- Create two tables
+CREATE TABLE Employees (
+    EmployeeID INT,
+    FirstName NVARCHAR(50),
+    LastName NVARCHAR(50)
+);
+
+CREATE TABLE Departments (
+    DepartmentID INT,
+    DepartmentName NVARCHAR(50),
+    EmployeeID INT
+);
+
+-- Insert some sample data
+INSERT INTO Employees (EmployeeID, FirstName, LastName) VALUES
+(1, 'John', 'Doe'),
+(2, 'Jane', 'Smith'),
+(3, 'Sam', 'Brown');
+
+INSERT INTO Departments (DepartmentID, DepartmentName, EmployeeID) VALUES
+(1, 'HR', 1),
+(2, 'IT', 2),
+(3, 'Finance', 4);
+
+-- Inner Join to get employees and their departments (only matching rows)
+SELECT Employees.EmployeeID, Employees.FirstName, Employees.LastName, Departments.DepartmentName
+FROM Employees
+INNER JOIN Departments ON Employees.EmployeeID = Departments.EmployeeID;
+
+
+--LEFT OUTER JOIN QUERY:
+
+-- Left Join to get all employees and their department (if any)
+SELECT Employees.EmployeeID, Employees.FirstName, Employees.LastName, Departments.DepartmentName
+FROM Employees
+LEFT OUTER JOIN Departments ON Employees.EmployeeID = Departments.EmployeeID;
+
+
+
+--RIGHT OUTER JOIN QUERY:
+
+-- Right Join to get all departments and their employees (if any)
+SELECT Employees.EmployeeID, Employees.FirstName, Employees.LastName, Departments.DepartmentName
+FROM Employees
+RIGHT OUTER JOIN Departments ON Employees.EmployeeID = Departments.EmployeeID;
+
+
+--FULL OUTER JOIN QUERY
+
+-- Full Outer Join to get all employees and all departments (with NULL where no match exists)
+SELECT Employees.EmployeeID, Employees.FirstName, Employees.LastName, Departments.DepartmentName
+FROM Employees
+FULL OUTER JOIN Departments ON Employees.EmployeeID = Departments.EmployeeID;
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+16)--QUE: What are the difference between HAVING and WHERE Clause?
+--ANS:
+--(*)WHERE:
+--  WHERE Clause is used before GROUP BY clause
+--  WHERE Clause cannot contain AGGREGATE function
+--(*)HAVING:
+-- HAVING Clause is used after GROUP BY clause
+-- HAVING  Clause can contain aggregate function
+EX:  
+select cutomername
+from customer
+group by cutomername
+having sum (customersalary )>5;
+
+--Query:
+select count(CustomerID),Country
+from customer
+where country ="india"
+group by country 
+having count (CustomerID )>5;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+17)--QUE:What are joins in sql?
+--ANS:
+-- A joins is used to COMBINE row from two or more table ,based on a releted column between them
+
+18)--QUE:What are Indexes in SQL Server?
+--ANS:
+--SQL index are used in relational databases to retrive data VERY FAST
