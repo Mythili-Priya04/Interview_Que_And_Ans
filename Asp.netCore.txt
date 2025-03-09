@@ -1,0 +1,120 @@
+1)//QUE:Describe the Service Lifetime in ap.net core or what is the difference between ADDSINGLETON ,ADDSCOPED ,ADDTRANSIENT?
+//ANS:
+//ADDSINGLETON-create only one instance when the service is requested for first time ,and then the same instance share by all different request
+//ADDSCOPED - Create single instance for each request for a different http request there will be different instance
+//ADDTRANSIENT - this instance is not shared at all ,every time a new instance will be created
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+2)//QUE:Explain Default Project Structure in Asp.net Core Application.cs
+//ANS:
+//*WWWROOT - To strore static file of the application like js/css/image
+//Program.cs - Entry point of the application ,configure service and request pipleine for the application
+//appsetting.json- Configure setting like database connection strings and other things the application
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+3)//QUE:Explain Session And State Management in ASP.NET Core.cs
+//ANS:
+//Cookies- Cookies store data in the users browser.Browser send cookies with every request
+//Session- session state helps in transferring data between different pages.it takes the help of cooking for this purpose
+//TempData-In asp.net MVC application tempdata is used to transfer data from controller to view 
+//Query String -it is used to transfer limited data by appending the url of the request
+//Hidden Fields- Hidden fields are used to persist data in same page during postbacks
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+4)//QUE:How Asp.Net core server static files.cs
+//ANS:
+//WWWROOT folder can be contains these static filess
+//usestaticfile() method inside program.cs configure enable the static files to be server to client
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+5)//QUE:How Routing Working in ASP.net core.cs
+//ANS:
+//* Routing is used to handle incoming HTTP request for the api based on the URL
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+6)//QUE:How To Use Dependency Injection In Views In Ap.net core.cs
+//ANS:
+//* A service can be inject into a view using @inject directive
+------------------------------------------------------------------------------------------------------------------------------------------------
+7)//QUE:What Are RAZOR Pages in .net core.cs
+//ANS:
+//*Razor pages follow a page-centric development model just like ASP.NET web form it support all the feature of ASP.NET CORE
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+8)//QUE:What are the advantage of .net core over .net framework.cs
+//ANS:
+//.net core is a cross platform which mean it can be run multiple platform like window, linux, macos
+//.net core is a open source ex: free to use , easy to modify ,easy to Distribute
+//.net core is interaction of modern UI framework like Angular ,react,ect...
+//.net core is hosting is multiple server like Kestrel ,IIS,etc...
+//.net core is Built Dependency injection like Loosely Coupled design,reusability,testability
+//.net core is  Support Multiple tool like Visual studio,Visual Studio Mac,Visual Studio Code
+------------------------------------------------------------------------------------------------------------------------------------------------
+9)//QUE:What is dotnet core.cs
+//ANS:
+//.net core is completely a new framework ,which is a free and opensource platform developed and maintained by microsoft
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+10)//QUE:What is Custom Middleware How to Add Custom Middleware in Ap.net Core.cs
+//ANS:
+//* There Middleware which are provided by the .net core framework like static file,routing,CORS,Authentication,Authorization that you can add your own custom middleware.
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+11)//QUE:what is Dependency injection in asp.net core or how can we inject the services dependency into the controller .cs
+//ANS:
+//Dependency injection helps to create LOOSELY COUPLED DESIGN OF THE application
+------------------------------------------------------------------------------------------------------------------------------------------------
+12)//QUE:What is difference between Kestrel and IIS .cs?
+//ANS:
+//*Kestrel
+//1)Kestrel is a lightweight web server used for hosting
+//2)Kestrel is cross platform and can be used with other web server like IIS,Nginx and Apache
+//3)Kestrel is open source like .net core
+
+//*IIS
+//1)IIS is a complete web server which is also used for hosting 
+//2)IIS can only run in window
+//3)IIS is not open source like .net framework
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+13)//QUE:What is Host in asp.net core.cs
+//ANS:
+//The host CONFIGURE A server like Kestrel or IIS and a request process pipeline
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+14)//QUE:What is Kestrel or what is in process and out of process.cs
+//ANS:
+//*In-process
+//Pure IIS hosting - Process name is w3wp.exe
+//only one web server
+
+//*out of process
+//Process name is dotnet.exe
+// two web server(IIS/Nginx/Apache+Kestrel)One Web server(Kestrel)
+
+//*out of processHosting:
+//Kestrel used as an edge (internet-facing)web server.
+//Kestrel used in a reverse proxy configuration
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+15)//QUE:What is Middleware.cs
+//ANS:
+//*A Middleware is nothing but a components of a class that is executed on every REQUEST in the ASP.NET Core application.
+//*We set up the middleware in asp.net core using the CONFIGURE method of program.cs file
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+16)//QUE:What is request delegate,what are Run,Use And Map methods.cs
+//ANS:
+//*Request delegate handle each HTTP request and are used to build request pipeline by using RUN,MAP and UE extension methods
+//*USE - This method will execute next middleware method
+//*RUN- Terminates chain no other middleware method will run after this .should be placed at the end of any pipeline
+//MAP- Execute middleware if path requested by user equal path provider in parameter
+------------------------------------------------------------------------------------------------------------------------------------------------
+17)//QUE:What is the role of Configure service and configure method .cs
+//ANS:
+//*Configure service method is optional it get called by a host before the 'Configure' method to configure the app service
+//Configure Method specifies how thw app responds to http request and response it is used to add MIDDLEWARE components
+
+
