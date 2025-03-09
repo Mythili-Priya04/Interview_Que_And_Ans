@@ -1,0 +1,249 @@
+1)//QUE:5 Advantage of React.cs
+//ANS:
+//1)Simple to build single page application (by using components)
+//2)React is a cross plateform and open source(free to use)
+//3)React is Lightweight and very fast bacaue(Virtual dom)
+//4)Large Community and Ecosystem
+//5)Testing is easy
+
+//disadvantage:
+//* react is not good choice for very small application
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2)//QUE:What are class component in React.cs
+//ANS:
+//*Class components are defined using Javascript classes
+//* they are stateful components by using the lifecycle methods
+//*the render method in a class component is responsible for return JSX
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+3)//QUE:What are Key Feature of React.cs
+//ANS:
+//*7 Key Feature
+//1)Virtual DOM 
+//2)Component Based Architecture
+//3)Reusability& Composition
+//4)JSX(Javascript XML)
+//5)Declarative Syntax
+//6)Community& Ecosystem
+//7)React Hooks
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4)//QUE:What are Props.cs
+//ANS:
+//Prop(properties) are a way to pass data from a parent component to a child component
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5)//QUE:What are React Hooks , what are the Top React Hooks.cs
+//ANS:
+//*React Hooks are inbuilt functions provided by react that allow function components to use state and lifecycle features
+//*Before Hooks ,class components lifecycle methods were used to maintain state in ReactApplications
+//*To use React Hooks First Have to import it From React Library
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+6)//QUE:What are state ,stateless,stateful and state management.cs
+//ANS:
+//*State:
+//state refers to the current data of the components
+
+//*stateful :
+//stateful or state management  means when a user perform some actions on the UI ,then the React Application Should be able to update and re-render that data or state on the UI
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7)//QUE:What are the 5 difference btw Functional components and class components.cs
+//ANS:
+//*Functional components
+//1)Syntax:Define as a function
+
+//2)State:originally stateless but can now maintain state using hooks
+
+//3)Lifecycle Method:no
+
+//4)Readability:More Readable & concise
+
+//5)This Keyword:no
+
+//*class components
+//1)Syntax:Define as a class
+
+//2)State:can manage local state with this.state
+
+//3)Lifecycle Method:yes
+
+//4)Readability:complex
+
+//5)This Keyword:yes(access props using this.props)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+8)//QUE:What are the role of  Routes and  Route Components in React Routing.cs
+//ANS:
+//*Routes:
+//The <Routes> components is used as the root container for declaring your collection of routes
+//*Route:
+// The <Route> components is used ton define a route and specify the component that should render when the route match
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+9)//QUE:What i the difference between React and Angular.cs
+//ANS:
+//React and Angular Both are used to create single page UI application using components
+//*React :
+//React is a javascript Library
+//React use a Virtual DOM with make it faster
+//React is smaller in size and lightweight and therefore faster sometime
+//React is simple to learn and more popular than Angular
+
+//*Angular
+//Angular is a complete Framework
+//Angular is a real DOM
+//Angular is biggest bacause it is a complete framework
+//Angular is slightly difficult to learn as it has typescript ,oops concepts and many more things
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+10)//QUE:What is a SPA(Single Page Application).cs
+//ANS:
+//A single page Application is a Web application that have only one single web page
+//Whenever user do some action on the website then in response content  is dynamic update without refreshing or load new page
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+11)//QUE:What is Arrow Function Expression in JSX.cs
+//ANS:
+// The Arrow function Expression syntax is a concise(mean short way) way of defining functions
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+12)//QUE:What is Babel.cs
+//ANS:
+// * Babel in React is used to transpile JSX syntax into regular javascript which browser can understand
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+13)//QUE:What is NPM(Node package manager).cs
+//ANS:
+//*NPM(Node package manager) is used to manage the dependencies for your React project including the React library itself
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+14)//QUE:What is public Folder.cs
+//ANS:
+// public Folder is contains static  a sets that are server directly to the user's browser,such as image,font,index.html
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+15)//QUE:What is React ,What is the Role of React in Software development.cs
+//ANS:
+//1)React is an open Source Javascript Library
+//2)React is used for building user interface(UI)
+//3)React simplifies the creation of SPA by using Reusable Components
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+16)//QUE:What is React Components,what are the main elements of it.cs
+//ANS:
+//*In React ,a components is a reusable building block for creating USER INTERFACE
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+17)//QUE:What is Role of index.js.cs
+//ANS:
+//* the index.js file is the javascript file that replace the root element of the index.html file with the newly rendered components
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+18)//QUE:What is Routing  And Router in React.cs
+//ANS:
+//*Routing:
+//Routing allows you to create a single page web application with navigation without the need for a full-page refresh
+//*React Router:
+//React Router is a library for handling routing and enables navigation and rendering of different components based on the URL
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+19)//QUE:What is the role of App.js file in react.cs
+//ANS:
+//*APP.JS File contain the root components(App) or React application
+//*App components is like a container for the other components
+//App.js defines the structure,layout,and routing in the application
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+20)//QUE:What is the role of export default inside app.js.cs
+//ANS:
+//Export statement is used to make a components Avalible  for "import" statement in other folder
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+21)//QUE:What is the role of function and return inside app.js.cs
+//ANS:
+//Function keyword is used to define a javascript function that represents your React components
+//function is like a placeholder which contains all the code or logic of components 
+// the function take in props as its argument and return JSX
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+22)//QUE:What is the role of JSX(Javascript XML) in React.cs
+//ANS:
+// JSX stands for (Javascript XML)
+// JSX is used by React to write HTML-Like code
+// JSX is converted to javascript via tools like Babel 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+23)//QUE:What is the role of src folder.cs
+//ANS:
+//*src folder is used to store all the source code of the application which is responsible for the dynamic change in your web application
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+24)//QUE:What is the role of use effect , how its  works what is its use.cs
+//ANS:
+//* the use effect hooks in react is used to perform side effects in functional components
+//*Ex: data fetching from api or any other operation that needs to be performed after the component has been rendered
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+25)//QUE:What is the role of usestate hook and how it works.cs
+//ANS:
+//UseState Working():usestate()function accept the initial state value as the parameter and return an array with two element
+//1)The first element is the current state value
+//2)second element is the function that is used to update the state
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+26)//QUE:What is Virtual DOM and difference between dom And Virtual Dom.cs
+//ANS:
+//DOM(Document Object Model): represents the web page as a tree like structure which allows javascript to dynamically access and manipulate the content and structure of a web page
+
+//Virtual DOM: React use Virtual dom to efficiently update the UI without re-render the entire page,which helps improve performance and make the application more responsive
+
+//DOM:
+//*DOM is actual representation of the webpage
+//*Re-renders the entire page when update occur
+//*Can be slower,especially with frequent update
+//*suitable for static website and simple applications
+
+//Virtual DOM
+//*Virtual DOM is lightweight copy of the DOM
+//*Re-enders only the changed parts efficiently
+//*Optimized for faster rendering
+//*ideal for dynamic and complex single page application with frequent update
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+27)//What is Spread Operation(...).cs
+//*The spread operator(...) is used to expand or spread an array or object
+//*map() method allows you to iterate over an array and modify its elements using a callback function.
+
+
