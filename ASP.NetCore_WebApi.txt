@@ -1,0 +1,153 @@
+1)//QUE:API KEY Authentication .cs
+//ANS:
+// In API KEY Authentication ,the API Owner will share an API Key with the user and this key will authenticate the users of that API
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2)//QUE:How to Consume Web api from a .net MVC application.cs
+//ANS:
+//Web Api methods can be consumed with the help of httpclient class
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3)//QUE:How to test Web API ,what are the tools.cs
+//ANS:
+//PostMan,Swagger  & Fidler tools
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4)//QUE:is it possible to use WCF as Restful services.cs?
+//ANS:
+//* yes,we can develop RESTful service with WCF
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5)//QUE:What are HTTP verbs or Method.cs
+//ANS:
+
+//*GET-Redrive data
+// Mainly this method used to get data from an database
+
+//*POST- Add new  data record
+//if we need to create a new employee in employee table in such a situation we use post method to post our data from page to the database.
+
+//*PUT-update current data record
+//if we need to update existing record in the database in such situations we use put method
+
+//*patch-update only particular properties
+//if we do not want to update all the fields of a particular record in such situation we can use patch method for updating record
+
+//*DELETE-Remove data record
+//As the name suggest delete method is used to remove record fro database there are mainly two type of delete opertion first is soft delete and second is hard delete
+
+//*Soft Delete:
+//Record is not actually deleted from database but marked a deleted.later if you want to retrive the deleted record
+
+//Hard Delete:
+//In hard delete record is permanently removed from database so it is not possible to get record after delete operation
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6)   //QUE:What are the parts of JWT token.cs
+//ANS:
+//JWT token JSON Web Tokens
+
+//1)Header:
+
+{
+    //algorithm:"HS256"
+    //TYP:"JWT"
+}
+//algorithm used to generate the token
+//The type of the token,which is JWT here
+
+//2)Payload
+
+{
+   // sub:"1234556789"
+   //name:"john"
+   //admin:true
+}
+//The playload contains the claims like sub name etc..
+
+//3)Verify Signature
+
+{
+    //base64urlEncode(header)+","+
+    //base64urlEncode(playload).
+    //secure
+
+}
+
+// the signature is used to verify that the issue of the JWT correct
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7)//QUE:what is basic Authentication in Web API.cs
+//ANS:
+//*Authentication Means verifying a user who is accessing the system or web api
+
+//Basic Authentication:
+//In basic Authentication,the user passes their credentials[username,password] on a post request.
+//At the webapi end,credentials are verified
+//if the credentials are valid ,then a session will initialte to accept the subsequent request without validating the user again
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+8)//QUE:What is JWT Authentication.cs
+//ANS:
+//*JWT authentication is a token based authentication where JWT is a token format
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+9)//QUE:What is OAuth.cs
+//ANS:
+//OAuth is a standard for creating token based Authentication and authorization
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+10)//QUE:What is Rest And Restful.cs
+//ANS:
+//REST- stands for Representational Transfer.
+//Rest is a set of guidelines which helps in creating a system where application can easily communicate with each other
+
+//*Rest Guidelines:
+//1)separation of client and server :
+//the implementation of the client and the implementation of the server can be done independently without each knowing about the other
+//2)Stateless:
+//The server will not store anything about the latest http request the client made.it will treat every request as new .no session ,no history.
+//3)uniform interface:
+//unique identify of resource by URL
+
+//RESTFUL- if a system written applying REST architectural concept ,it is called RESTFUL services
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+11)//QUE:What is the difference between Web api Controller and MVC Controller.cs
+//ANS:
+//*Web api Controller:
+//Web api controller derives from SYSTEM.WEB.HTTP.APICONTROLLER class
+//Web api controller does not give view support
+
+//*MVC controller:
+//ASP.NET MVC Controller derives from SYSTEM.WEB.MVC.CONTROLLER class
+//ASP.NET MVC give view support
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+12)//QUE:What is Token based authentication.cs
+//ANS:
+//Token-based authentication is a 4 step process
+//1)Client Application first sends a request to Authentication server with a valid  credentials
+//2)The Authentication server/Web Api ends an access token to the client as a response.this token contains enough data to identify a particular user and it has an expiry time.
+//3)The client application then uses the token to access the restrict resource in the next requests untill the token is valid.
+//4)if the Access token i expired,then the client application can request for a new access token by using referesh token.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+13)//QUE:What is Web Api ?What is the purpose of Web Api?
+//ANS:
+//Web Api(Application Programming Interface)Provides Interaction Between Software Application.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+14)//QUE:What is Web Api Advantage.cs?
+//Ans:
+//* Every business like amazon,facebook,twitter,need both mobile app and website and web api is a better option for that.
+//1)its works the way http works using standard http method like GET,POST,PUT,DELETE for all the curd operation
+//2)its open source
+//3)its lightweight architecture and its good for devices which have limited bandwidth(JSON&XML are LightWeight)Like smart cell phone
+//4)web api controller pattern is much similar to mvc controller . thus ,it becomes easy to maintain and understand
+//5)web api has very easy configuration setting as comparison to wcf
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+15)//QUE:Where JWT Token reside in the request.cs
+//ANS:
+//  TOKEN AND AUTHENTICATION BOTH IN  POSTMAN 
+//*in Request in header
+//*Key-Authorization
+//*value-Token
