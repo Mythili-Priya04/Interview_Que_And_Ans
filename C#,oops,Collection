@@ -1,6 +1,6 @@
 1)//QUE: What is Abstraction
 //Ans:
-// *Abstraction is one of the key concepts of Object-Oriented Programming (OOP).
+//*Abstraction is one of the key concepts of Object-Oriented Programming (OOP).
 //*It is used to hide complex implementation details and only show essential features to the user.
 //*Abstraction is must be abstract keyword 
 //*Abstraction can an constructor
