@@ -4,7 +4,7 @@
 //*It is used to hide complex implementation details and only show essential features to the user.
 //*Abstraction is must be abstract keyword 
 //*Abstraction can an constructor
-//*Abstraction have an abstract and non abstract method
+//*Abstraction have an abstract and non abstract method.
 
 
 //Ex code:
