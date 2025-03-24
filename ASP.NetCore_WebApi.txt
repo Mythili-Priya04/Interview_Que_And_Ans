@@ -12,9 +12,9 @@
 //PostMan,Swagger  & Fidler tools
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-4)//QUE:is it possible to use WCF as Restful services.cs?
+4)//QUE:is it possible to use WCF(Windows Communication Foundation) as Restful services.cs?
 //ANS:
-//* yes,we can develop RESTful service with WCF
+//* yes,we can develop RESTful service with WCF(Windows Communication Foundation)
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 5)//QUE:What are HTTP verbs or Method.cs
 //ANS:
