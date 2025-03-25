@@ -72,7 +72,7 @@
 //2)Kestrel is cross platform and can be used with other web server like IIS,Nginx and Apache
 //3)Kestrel is open source like .net core
 
-//*IIS
+//*IIS(Internet information Services)
 //1)IIS is a complete web server which is also used for hosting 
 //2)IIS can only run in window
 //3)IIS is not open source like .net framework
