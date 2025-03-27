@@ -63,7 +63,9 @@
 
 11)//QUE:what is Dependency injection in asp.net core or how can we inject the services dependency into the controller .cs
 //ANS:
-//Dependency injection helps to create LOOSELY COUPLED DESIGN OF THE application
+//Dependency injection is built into .net core and can be configured in program.cs using the configureServices method 
+// Dependency injection is have a more type Addtransient,Scoped,Singleton.time
+//Transient create new instances per request,Scoped per http request,and Singleton shares the same instance for the application's lifetime
 ------------------------------------------------------------------------------------------------------------------------------------------------
 12)//QUE:What is difference between Kestrel and IIS .cs?
 //ANS:
