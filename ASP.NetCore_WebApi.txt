@@ -133,6 +133,8 @@
 13)//QUE:What is Web Api ?What is the purpose of Web Api?
 //ANS:
 //Web Api(Application Programming Interface)Provides Interaction Between Software Application.
+and then its a cross platform run on multiple platform like window,linux,macos 
+its allow developer to create apis that can be consumed by web,mobile,desktop application
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 14)//QUE:What is Web Api Advantage.cs?
